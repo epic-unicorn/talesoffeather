@@ -12,9 +12,9 @@ module.exports = {
       },
       colors: {
         sky: colors.sky,
-        cyan: colors.cyan,
-        primary: "#0f1033",
-        secondary: "#7d08ff",
+        cyan: colors.blue,
+        primary: "#5a5a5a",
+        secondary: "#343434",
       },
     },
   },

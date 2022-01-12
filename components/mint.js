@@ -67,18 +67,18 @@ const Hero = () => {
             <>
               {/* Minted NFT Ratio */}
               <p className="bg-gray-100 rounded-md text-gray-800 font-extrabold text-lg my-4 py-1 px-3">
-                <span className="text-purple-600">{`${totalSupply}`}</span> /
-                10K
+                <span className="text-green-600">{`${totalSupply}`}</span> /
+                5K
               </p>
 
               <div className="flex items-center mt-6 text-3xl font-bold text-gray-200">
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-white rounded-md text-black hover:bg-pink-200 text-center"
+                  className="flex items-center justify-center w-12 h-12 bg-white rounded-md text-black hover:bg-gray-200 text-center"
                   onClick={incrementCount}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-pink-400"
+                    className="w-6 h-6 text-green-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -95,12 +95,12 @@ const Hero = () => {
                 <h2 className="mx-8">{count}</h2>
 
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-white rounded-md hover:bg-pink-200 text-center"
+                  className="flex items-center justify-center w-12 h-12 bg-white rounded-md hover:bg-gray-200 text-center"
                   onClick={decrementCount}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-pink-400"
+                    className="w-6 h-6 text-red-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -122,7 +122,7 @@ const Hero = () => {
 
               {/* Mint Button */}
               <button
-                className="mt-6 py-2 px-4 text-center text-white uppercase bg-pink-500 border-b-4 border-pink-700 rounded hover:bg-pink-400 hover:border-pink-500"
+                className="mt-6 py-2 px-4 text-center text-white uppercase bg-gray-500 border-b-4 border-gray-700 rounded hover:bg-gray-400 hover:border-gray-500"
                 onClick={mintFeather}
               >
                 Mint now!
@@ -138,7 +138,7 @@ const Hero = () => {
           {/* Status */}
 
           {status && (
-            <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-white bg-red-400 rounded-md ">
+            <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-white bg-gray-200 rounded-md ">
               {status}
             </div>
           )}

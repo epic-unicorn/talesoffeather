@@ -116,7 +116,7 @@ export const mintNFT = async (mintAmount) => {
       status: (
         <p>
           🦊 Connect to Metamask using{" "}
-          <span className="px-2 text-purple-600">Connect Wallet</span> button.
+          <span className="px-2 text-gray-600">Connect Wallet</span> button.
         </p>
       ),
     };
@@ -141,13 +141,13 @@ export const mintNFT = async (mintAmount) => {
     return {
       success: true,
       status:
-        "✅ Check out your transaction on Etherscan: https://rinkeby.etherscan.io/tx/" +
+        "Check out your transaction on Etherscan: https://rinkeby.etherscan.io/tx/" +
         txHash,
     };
   } catch (error) {
     return {
       success: false,
-      status: "😥 Something went wrong: " + error.message,
+      status: "Something went wrong: " + error.message,
     };
   }
 };

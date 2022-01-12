@@ -44,29 +44,25 @@ const Header = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="sticky inset-x-0 top-0 z-10 h-20 min-w-full text-white border-b border-purple-900 bg-primary backdrop-filter backdrop-blur-lg bg-opacity-30">
+      <header className="sticky inset-x-0 top-0 z-10 h-20 min-w-full text-white border-b border-gray-900 bg-primary">
         <div className="flex items-center container mx-auto max-w-7xl justify-between h-full">
           {/* Logo */}
           <Link href="#">
-            <a className="text-2xl font-bold">
-              <span className="pr-2 text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-purple-600">
-                Tales
-              </span>
-              of Feather
+            <a className="text-2xl font-bold">              
+                Tales of Feather
             </a>
           </Link>
 
           {/* Navigation */}
-
           <nav aria-label="Main Menu">
             <ul className="flex items-center space-x-8">
               <li className="text-gray-200 text-semibold">
-                <Link href="#about">
-                  <a>About</a>
+                <Link href="#link">
+                  <a>Link</a>
                 </Link>
               </li>
 
-              <li className="hover:text-purple-500 hover:border-purple-500 cursor-pointer px-4 py-2 font-extrabold text-purple-300 border border-purple-300 rounded-md">
+              <li className="hover:text-gray-500 hover:border-gray-500 cursor-pointer px-4 py-2 font-extrabold text-gray-300 border border-gray-300 rounded-md">
                 <a
                   className=""
                   id="walletButton"

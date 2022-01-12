@@ -10,7 +10,7 @@ html {
 }
 
 .bg-pattern {
-  background-color: #906693;  
+  background-color: #808080;  
   background-attachment: fixed;
   background-size: cover;
 }
@@ -18,28 +18,10 @@ html {
 ::-moz-selection {
   /* Code for Firefox */
   color: #f4f4f4;
-  background: #6e0cca;
+  background: #5a5a5a;
 }
 
 ::selection {
   color: #f4f4f4;
-  background: #6e0cca;
-}
-
-.gradient-background {
-  background: linear-gradient(213deg, #b312dd, #ff4e58, #9222d4, #33c2d0);
-  background-size: 240% 240%;
-  animation: gradient-animation 12s ease infinite;
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  background: #5a5a5a;
 }
