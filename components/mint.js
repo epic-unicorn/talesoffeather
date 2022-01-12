@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { useStatus } from "../context/statusContext";
+import Image from "next/image";
 
 import {
   getMaxMintAmount,
@@ -55,6 +55,13 @@ const Hero = () => {
     <main id="main" className="h-screen py-16 bg-pattern">
       <div className="container max-w-6xl mx-auto flex flex-col items-center pt-4">
         <div className="flex flex-col items-center">
+          <Image
+            src="/images/buy.gif"
+            width="636"
+            height="357"
+            alt="buy gif"
+            className="rounded-md"
+          />
 
           {isSaleActive ? (
             <>
