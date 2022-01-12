@@ -21,7 +21,7 @@ export const connectWallet = async () => {
     } catch (err) {
       return {
         address: "",
-        status: "😞" + err.message,
+        status: err.message,
       };
     }
   } else {
@@ -58,13 +58,13 @@ export const getCurrentWalletConnected = async () => {
       } else {
         return {
           address: "",
-          status: "😞",
+          status: "",
         };
       }
     } catch (err) {
       return {
         address: "",
-        status: "😞" + err.message,
+        status: err.message,
       };
     }
   } else {
@@ -126,11 +126,11 @@ export const mintNFT = async (mintAmount) => {
   const transactionParameters = {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
-    value: parseInt(web3.utils.toWei("0.0019", "ether") * mintAmount).toString(
+    value: parseInt(web3.utils.toWei("0.001", "ether") * mintAmount).toString(
       16
     ), // hex
     gasLimit: "0",
-    data: nftContract.methods.mintEmoji(mintAmount).encodeABI(), //make call to NFT smart contract
+    data: nftContract.methods.mintFeather(mintAmount).encodeABI(), //make call to NFT smart contract
   };
   //sign the transaction via Metamask
   try {

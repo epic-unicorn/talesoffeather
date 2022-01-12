@@ -50,9 +50,9 @@ const Header = () => {
           <Link href="#">
             <a className="text-2xl font-bold">
               <span className="pr-2 text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-purple-600">
-                Emoji
+                Tales
               </span>
-              Faces
+              of Feather
             </a>
           </Link>
 
@@ -63,18 +63,6 @@ const Header = () => {
               <li className="text-gray-200 text-semibold">
                 <Link href="#about">
                   <a>About</a>
-                </Link>
-              </li>
-
-              <li className="text-gray-200 text-semibold">
-                <Link href="#gallery">
-                  <a>The Gallery</a>
-                </Link>
-              </li>
-
-              <li className="text-gray-200 text-semibold">
-                <Link href="#faq">
-                  <a>FAQ</a>
                 </Link>
               </li>
 
@@ -117,7 +105,7 @@ const Header = () => {
               </li>
 
               <li>
-                <a href="https://twitter.com/DidemKkkaraasl1" target="_blank">
+                <a href="https://twitter.com/" target="_blank">
                   <svg
                     className="w-7 h-7"
                     stroke="currentColor"
@@ -132,7 +120,7 @@ const Header = () => {
               </li>
 
               <li>
-                <a href="https://discord.gg/rAFdkCwn" target="_blank">
+                <a href="https://discord.gg/" target="_blank">
                   <svg
                     className="w-7 h-7"
                     stroke="currentColor"

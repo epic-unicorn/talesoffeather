@@ -7,12 +7,12 @@ const About = () => {
         About The Project
       </h1>
       <div className="container relative max-w-6xl py-3 pt-16 mx-auto mt-20 sm:max-w-xl sm:mx-auto">
-        <div className="absolute inset-0 transform shadow-lg gradient-background -skew-y-6sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
             <div>
-              <h1 className="font-mono text-3xl font-bold text-gray-900 underlined">
-                THE EMOJI FACES
+              <h1 className="font-mono text-3xl font-bold text-gray-900">
+                Tales of Feather
               </h1>
             </div>
             <div className="divide-y divide-gray-200">
@@ -33,7 +33,7 @@ const About = () => {
                       </svg>
                     </span>
                     <p className="ml-2">
-                      <code className="font-semibold text-gray-900">7,777</code>{" "}
+                      <code className="font-semibold text-gray-900">5000</code>{" "}
                       ERC-721 NFTs.
                     </p>
                   </li>
@@ -87,15 +87,15 @@ const About = () => {
                         />
                       </svg>
                     </span>
-                    <p className="ml-2">0.01 ETH per FACES.</p>
+                    <p className="ml-2">0.01 ETH per Feather</p>
                   </li>
                 </ul>
               </div>
               <div className="pt-6 text-base leading-6 font-extralight sm:text-lg sm:leading-7">
                 <p>
-                  Emoji Faces seemed doomed to live as fancy props. Mere
-                  portable delights for their human masters. But a few rogue
-                  ones didn't want to play the nice-faces game anymore.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
                 </p>
                 <p className="mt-8">
                   <Link href="#main">
