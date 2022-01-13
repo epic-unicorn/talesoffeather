@@ -30,8 +30,6 @@ export const connectWallet = async () => {
       status: (
         <span>
           <p>
-            {" "}
-            🦊{" "}
             <a target="_blank" href="https://metamask.io/download.html">
               You must install MetaMask, a virtual Ethereum wallet, in your
               browser.
@@ -73,8 +71,6 @@ export const getCurrentWalletConnected = async () => {
       status: (
         <span>
           <p>
-            {" "}
-            🦊{" "}
             <a target="_blank" href="https://metamask.io/download.html">
               You must install MetaMask, a virtual Ethereum wallet, in your
               browser.
@@ -115,8 +111,7 @@ export const mintNFT = async (mintAmount) => {
       success: false,
       status: (
         <p>
-          🦊 Connect to Metamask using{" "}
-          <span className="px-2 text-gray-600">Connect Wallet</span> button.
+          <span className="px-2 text-white">Wallet not connected...</span>
         </p>
       ),
     };

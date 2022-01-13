@@ -55,21 +55,24 @@ const Hero = () => {
     <main id="main" className="h-screen py-16 bg-pattern">
       <div className="container max-w-6xl mx-auto flex flex-col items-center pt-4">
         <div className="flex flex-col items-center">
-          <Image
+          {/* <Image
             src="/images/buy.gif"
             width="636"
             height="357"
             alt="buy gif"
             className="rounded-md"
-          />
+          /> */}
 
           {isSaleActive ? (
             <>
               {/* Minted NFT Ratio */}
-              <p className="bg-gray-100 rounded-md text-gray-800 font-extrabold text-lg my-4 py-1 px-3">
-                <span className="text-green-600">{`${totalSupply}`}</span> /
-                5K
-              </p>
+              <span className="text-white">
+                Total supply minted: {`${totalSupply}`} of 5K
+              </span>
+              <h4 className="mt-2 font-semibold text-center text-white">
+                {nftPrice} ETH{" "}
+                <span className="text-sm text-gray-300"> + GAS</span>
+              </h4>
 
               <div className="flex items-center mt-6 text-3xl font-bold text-gray-200">
                 <button
@@ -115,11 +118,6 @@ const Hero = () => {
                 </button>
               </div>
 
-              <h4 className="mt-2 font-semibold text-center text-white">
-                {nftPrice} ETH{" "}
-                <span className="text-sm text-gray-300"> + GAS</span>
-              </h4>
-
               {/* Mint Button */}
               <button
                 className="mt-6 py-2 px-4 text-center text-white uppercase bg-gray-500 border-b-4 border-gray-700 rounded hover:bg-gray-400 hover:border-gray-500"
@@ -138,7 +136,7 @@ const Hero = () => {
           {/* Status */}
 
           {status && (
-            <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-white bg-gray-200 rounded-md ">
+            <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-white rounded-md ">
               {status}
             </div>
           )}
