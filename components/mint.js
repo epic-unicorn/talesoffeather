@@ -10,7 +10,7 @@ import {
   getSaleState,
 } from "../utils/interact";
 
-const Hero = () => {
+const mint = () => {
   const { status, setStatus } = useStatus();
 
   const [count, setCount] = useState(1);
@@ -76,12 +76,12 @@ const Hero = () => {
 
               <div className="flex items-center mt-6 text-3xl font-bold text-th-primary-light">
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-th-background rounded-md text-th-accent-light hover:bg-gray-200 text-center"
+                  className="flex items-center justify-center w-12 h-12 bg-th-background rounded-md text-th-accent-light hover:bg-th-accent-dark text-center"
                   onClick={incrementCount}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-th-"
+                    className="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -98,12 +98,12 @@ const Hero = () => {
                 <h2 className="mx-8">{count}</h2>
 
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-white rounded-md hover:bg-gray-200 text-center"
+                  className="flex items-center justify-center w-12 h-12 bg-th-background rounded-md hover:bg-th-accent-dark text-th-accent-light text-center"
                   onClick={decrementCount}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-red-400"
+                    className="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -120,7 +120,7 @@ const Hero = () => {
 
               {/* Mint Button */}
               <button
-                className="mt-6 py-2 px-4 text-center text-white uppercase bg-gray-500 border-b-4 border-gray-700 rounded hover:bg-gray-400 hover:border-gray-500"
+                className="mt-6 py-2 px-4 text-center uppercase hover:bg-th-accent-dark bg-th-background text-th-accent-light rounded"
                 onClick={mintFeather}
               >
                 Mint now!
@@ -128,22 +128,22 @@ const Hero = () => {
             </>
           ) : (
             <p className="text-white text-2xl mt-8">
-              {" "}
               Sale is not started yet...
             </p>
           )}
 
           {/* Status */}
 
+          <span className="text-th-accent-medium">
           {status && (
-            <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-white rounded-md ">
+            <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-black rounded-md ">
               {status}
             </div>
-          )}
+          )}</span>
         </div>
       </div>
     </main>
   );
 };
 
-export default Hero;
+export default mint;

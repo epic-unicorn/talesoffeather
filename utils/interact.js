@@ -111,7 +111,7 @@ export const mintNFT = async (mintAmount) => {
       success: false,
       status: (
         <p>
-          <span className="px-2 text-white">Wallet not connected...</span>
+          <span className="px-2">Wallet not connected...</span>
         </p>
       ),
     };
