@@ -16,7 +16,7 @@ const Hero = () => {
   const [count, setCount] = useState(1);
   const [maxMintAmount, setMaxMintAmount] = useState(0);
   const [totalSupply, setTotalSupply] = useState(0);
-  const [nftPrice, setNftPrice] = useState("0.01");
+  const [nftPrice, setNftPrice] = useState("0.001");
   const [isSaleActive, setIsSaleActive] = useState(false);
 
   useEffect(async () => {
@@ -66,22 +66,22 @@ const Hero = () => {
           {isSaleActive ? (
             <>
               {/* Minted NFT Ratio */}
-              <span className="text-white">
+              <span className="text-th-accent-medium">
                 Total supply minted: {`${totalSupply}`} of 5K
               </span>
-              <h4 className="mt-2 font-semibold text-center text-white">
+              <h4 className="mt-2 font-semibold text-center text-th-accent-light">
                 {nftPrice} ETH{" "}
-                <span className="text-sm text-gray-300"> + GAS</span>
+                <span className="text-sm text-th-accent-light"> + GAS</span>
               </h4>
 
-              <div className="flex items-center mt-6 text-3xl font-bold text-gray-200">
+              <div className="flex items-center mt-6 text-3xl font-bold text-th-primary-light">
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-white rounded-md text-black hover:bg-gray-200 text-center"
+                  className="flex items-center justify-center w-12 h-12 bg-th-background rounded-md text-th-accent-light hover:bg-gray-200 text-center"
                   onClick={incrementCount}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-green-400"
+                    className="w-6 h-6 text-th-"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
