@@ -2,21 +2,17 @@ import Link from "next/link";
 
 const About = () => {
   return (
-    <div id="about" className="py-10 mt-16 mb-60 ">
-      <h1 className="mb-20 font-mono text-6xl font-semibold text-center text-gray-100 uppercase">
-        About The Project
-      </h1>
-      <div className="container relative max-w-6xl py-3 pt-16 mx-auto mt-20 sm:max-w-xl sm:mx-auto">
-        
+    <div id="about" className="py-10 mt-16 mb-60">      
+      <div className="container relative max-w-6xl py-3 pt-16 mx-auto mt-20 sm:max-w-xl sm:mx-auto">      
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
             <div>
-              <h1 className="font-mono text-3xl font-bold text-gray-900">
+              <h1 className="font-mono text-3xl font-bold text-th-primary-dark">
                 Tales of Feather
               </h1>
             </div>
             <div className="divide-y divide-gray-200">              
-              <div className="pt-6 text-base leading-6 font-extralight sm:text-lg sm:leading-7">
+              <div className="pt-6 text-base leading-6 font-extralight text-th-primary-medium sm:text-lg sm:leading-7">
                 <p>
                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
@@ -24,8 +20,7 @@ const About = () => {
                 </p>
                 <p className="mt-8">
                   <Link href="#main">
-                    <a className="text-cyan-600 hover:text-cyan-700">
-                      {" "}
+                    <a className="hover:text-th-accent-dark text-th-accent-light rounded">
                       Mint one
                     </a>
                   </Link>

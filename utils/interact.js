@@ -105,6 +105,26 @@ export const getSaleState = async () => {
   return result;
 };
 
+export const getTokensOfOwner = async () => {
+  if(!window.ethereum.selectedAddress) {
+    return {
+      success: false,
+      status: (
+        <p>
+          <span className="px-2">Wallet not connected...</span>
+        </p>
+      ),
+    };
+  }
+  const result = await nftContract.methods.tokensOfOwner(window.ethereum.selectedAddress).call();
+  return result;
+};
+
+export const getTokenUri = async (tokenId) => {
+  const result = await nftContract.methods.tokenURI(tokenId).call();
+  return result;
+};
+
 export const mintNFT = async (mintAmount) => {
   if (!window.ethereum.selectedAddress) {
     return {
