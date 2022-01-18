@@ -1,5 +1,5 @@
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-const web3 = createAlchemyWeb3(process.env.NEXT_PUBLIC_API_URL);
+const web3 = createAlchemyWeb3(process.env.API_URL);
 
 const contract = require("../artifacts/contracts/FeatherTest.sol/FeatherTest.json");
 const contractAddress = "0x7f69e0cbf7eA7Ed5f807E599D3404aEBC19B17D7";
@@ -106,7 +106,7 @@ export const getSaleState = async () => {
 };
 
 export const getTokensOfOwner = async () => {
-  if(!window.ethereum.selectedAddress) {
+  if (!window.ethereum.selectedAddress) {
     return {
       success: false,
       status: (
@@ -116,7 +116,9 @@ export const getTokensOfOwner = async () => {
       ),
     };
   }
-  const result = await nftContract.methods.tokensOfOwner(window.ethereum.selectedAddress).call();
+  const result = await nftContract.methods
+    .tokensOfOwner(window.ethereum.selectedAddress)
+    .call();
   return result;
 };
 
@@ -153,11 +155,15 @@ export const mintNFT = async (mintAmount) => {
       method: "eth_sendTransaction",
       params: [transactionParameters],
     });
+
+    const txHashLink = "https://rinkeby.etherscan.io/tx/" + txHash;
     return {
       success: true,
-      status:
-        "Check out your transaction on Etherscan: https://rinkeby.etherscan.io/tx/" +
-        txHash,
+      status: (
+        <a href={txHashLink} target="_blank">
+          Transaction link: {txHashLink}
+        </a>
+      ),
     };
   } catch (error) {
     return {

@@ -17,7 +17,6 @@ const owned = () => {
       <div className="container max-w-6xl mx-auto flex flex-col items-center pt-4">
       <span className="text-th-primary-medium">Tokens owned</span>
         <div className="flex flex-col items-center text-th-primary-light">
-          if(! tokensOfOwner) return null;
           {tokensOfOwner.map((number) => (
             <li key={number}>{number + tokenUri}</li>
           ))}

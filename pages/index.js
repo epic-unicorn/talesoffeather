@@ -1,7 +1,7 @@
-import Header from "../components/header";
-import Mint from "../components/mint";
-import Owned from "../components/owned";
-import About from "../components/about";
+import Header from "../components/Header";
+import Mint from "../components/Mint";
+import Owned from "../components/Owned";
+import About from "../components/About";
 
 export default function Home() {
   return (
