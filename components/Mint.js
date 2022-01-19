@@ -57,7 +57,7 @@ const Mint = () => {
         <div className="flex flex-col items-center">
 
           <span className="text-th-accent-dark text-8xl">On Rinkeby Testnet</span>
-          {""}
+          <br />
           <span className="text-th-accent-dark text-4xl">Mint your Feather</span>
 
           {isSaleActive ? (
