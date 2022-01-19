@@ -10,7 +10,7 @@ import {
   getSaleState,
 } from "../utils/interact";
 
-const mint = () => {
+const Mint = () => {
   const { status, setStatus } = useStatus();
 
   const [count, setCount] = useState(1);
@@ -142,4 +142,4 @@ const mint = () => {
   );
 };
 
-export default mint;
+export default Mint;

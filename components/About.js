@@ -14,9 +14,7 @@ const About = () => {
             <div className="divide-y divide-gray-200">              
               <div className="pt-6 text-base leading-6 font-extralight text-th-primary-medium sm:text-lg sm:leading-7">
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                  blalalalla
                 </p>
                 <p className="mt-8">
                   <Link href="#main">

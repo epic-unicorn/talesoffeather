@@ -1,6 +1,5 @@
 import Header from "../components/Header";
 import Mint from "../components/Mint";
-import Owned from "../components/Owned";
 import About from "../components/About";
 
 export default function Home() {
@@ -9,7 +8,6 @@ export default function Home() {
       <Header />      
       <Mint />
       <About />
-      {/* <Owned /> */}
     </div>
   );
 }

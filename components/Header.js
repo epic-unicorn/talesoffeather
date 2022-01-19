@@ -15,12 +15,22 @@ const Header = () => {
     setStatus(walletResponse.status);
   };
 
-  useEffect(async () => {
+  /* useEffect(async () => {
     const walletResponse = await getCurrentWalletConnected();
     setWalletAddress(walletResponse.address);
     setStatus(walletResponse.status);
 
     addWalletListener();
+  }, []); */
+
+  useEffect(() => {
+    async function fetchData() {
+      const walletResponse = await getCurrentWalletConnected();
+      setWalletAddress(walletResponse.address);
+      setStatus(walletResponse.status);
+      addWalletListener();
+    }
+    fetchData();
   }, []);
 
   const addWalletListener = () => {
@@ -56,7 +66,7 @@ const Header = () => {
 
           {/* Navigation */}
           <nav aria-label="Main Menu">
-            <ul className="flex items-center space-x-8">
+            <ul className="flex items-center space-x-8">              
 
               <li className="hover:text-th-accent-medium hover:border-th-accent-medium cursor-pointer px-4 py-2 font-extrabold text-th-accent-dark border border-th-accent-medium rounded-md">
                 <a
@@ -81,7 +91,7 @@ const Header = () => {
           <nav aria-label="Contact Menu">
             <ul className="flex items-center space-x-6">
               <li>
-                <a href="https://opensea.io" target="_blank">
+                <a href="https://opensea.io" target="_blank" rel="noreferrer">
                   <svg
                     className="text-th-primary-medium hover:text-th-accent-medium fill-current w-7 h-7"
                     viewBox="0 0 90 90"
@@ -93,7 +103,7 @@ const Header = () => {
               </li>
 
               <li>
-                <a href="https://twitter.com/" target="_blank">
+                <a href="https://twitter.com/" target="_blank" rel="noreferrer">
                   <svg
                     className="text-th-primary-medium hover:text-th-accent-medium fill-current w-7 h-7"
                     viewBox="0 0 512 512"
@@ -105,7 +115,7 @@ const Header = () => {
               </li>
 
               <li>
-                <a href="https://discord.gg/" target="_blank">
+                <a href="https://discord.gg/" target="_blank" rel="noreferrer">
                   <svg
                     className="text-th-primary-medium hover:text-th-accent-medium fill-current w-7 h-7"
                     viewBox="0 0 448 512"
