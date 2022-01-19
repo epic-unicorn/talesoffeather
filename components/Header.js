@@ -46,7 +46,7 @@ const Header = () => {
       </Head>
 
       <header className="sticky inset-x-0 top-0 z-10 h-30 min-w-full text-th-primary-medium bg-th-background-secondary">
-        <div className="flex items-center container mx-auto max-w-7xl justify-between h-full">
+        <div className="flex items-center container mx-auto max-w-7xl justify-between h-full ml-4">
           {/* Logo */}
           <Link href="#">
             <a className="text-2xl font-bold text-th-accent-dark hover:text-th-accent-medium">              
@@ -56,7 +56,7 @@ const Header = () => {
 
           {/* Navigation */}
           <nav aria-label="Main Menu">
-            <ul className="flex items-center space-x-8">              
+            <ul className="flex items-center space-x-8">
 
               <li className="hover:text-th-accent-medium hover:border-th-accent-medium cursor-pointer px-4 py-2 font-extrabold text-th-accent-dark border border-th-accent-medium rounded-md">
                 <a

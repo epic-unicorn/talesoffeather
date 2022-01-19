@@ -11,6 +11,12 @@ body {
   display: grid;
 }
 
+@layer base {
+  a {
+    @apply underline;
+  }
+}
+
 :root {
   --background: theme("colors.white");
   --background-secondary: theme("colors.gray.300");
@@ -29,7 +35,7 @@ body {
 }
 
 [data-theme="dark"] {
-  --background: theme("colors.black");
+  --background: theme("colors.gray.600");
   --background-secondary: theme("colors.gray.800");
 
   --accent-dark: theme("colors.fuchsia.900");

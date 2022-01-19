@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const About = () => {
   return (
-    <div id="about" className="py-10 mt-16 mb-60">      
+    <div id="about" className="py-10 mt-16 mb-60 bg-th-background-secondary">      
       <div className="container relative max-w-6xl py-3 pt-16 mx-auto mt-20 sm:max-w-xl sm:mx-auto">      
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
