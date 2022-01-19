@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import ThemeChanger from '../components/themechanger';
+import ThemeChanger from '../components/ThemeChanger';
 import { useState, useEffect } from "react";
 import { useStatus } from "../context/statusContext";
 import { connectWallet, getCurrentWalletConnected } from "../utils/interact";

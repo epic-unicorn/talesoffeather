@@ -5,7 +5,6 @@
 /.pnp
 .pnp.js
 .vscode
-/artifacts
 /cache
 
 # testing
@@ -36,7 +35,6 @@ node_modules
 coverage
 coverage.json
 typechain
-articles
 cache
 
 #Hardhat files
