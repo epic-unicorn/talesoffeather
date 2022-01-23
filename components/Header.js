@@ -9,7 +9,7 @@ export default function Header() {
         <div className="flex flex-row items-center justify-between p-4">
           <a
             href="/#home"
-            className="text-lg font-semibold rounded-lg tracking-widest focus:outline-none focus:shadow-outline"
+            className="text-lg font-semibold rounded-lg focus:outline-none focus:shadow-outline"
           >
             <h1 className="text-2xl text-gray-900 sm:text-l md:text-xl lg:text-2xl">
               Tales of Feather
@@ -17,7 +17,7 @@ export default function Header() {
           </a>
 
           <button
-            className="text-white flex px-4 py-2 mt-2 ml-10 font-medium bg-black rounded-lg"
+            className="text-white flex px-4 py-2 ml-5 font-medium bg-black rounded-lg"
             type="button"
             aria-label="button"
             onClick={() => console.log('connect wallet')}
