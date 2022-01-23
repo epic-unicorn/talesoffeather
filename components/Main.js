@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Main() {
   return (
     <section className="relative">
@@ -16,12 +18,11 @@ export default function Main() {
             autoComplete="email"
             className="border border-gray-600 w-1/4 pr-2 pl-2 py-3 mt-2 rounded-md text-gray-800 font-semibold hover:border-gray-900"
           ></input>{" "}
-          <a
-            className="inline-flex items-center px-14 py-3 mt-2 ml-2 font-medium text-white transition duration-500 ease-in-out transform bg-transparent border rounded-lg bg-gray-900"
-            href="/"
-          >
-            <span className="justify-center">Subscribe</span>
-          </a>
+          <Link href="/">
+            <a className="inline-flex items-center px-14 py-3 mt-2 ml-2 font-medium text-white transition duration-500 ease-in-out transform bg-transparent border rounded-lg bg-gray-900">
+              <span className="justify-center">Subscribe</span>
+            </a>
+          </Link>
         </div>
       </div>
     </section>
