@@ -1,13 +1,15 @@
 import Header from "../components/Header";
 import Mint from "../components/Mint";
-import About from "../components/About";
+import Footer from "../components/Footer";
+import Main from "../components/Main";
 
 export default function Home() {
   return (
     <div className="min-h-screen w-full bg-th-background-primary">
-      <Header />      
+      <Header />
+      {/* <Main />  */}
       <Mint />
-      <About />
+      {/* <Footer /> */}
     </div>
   );
 }

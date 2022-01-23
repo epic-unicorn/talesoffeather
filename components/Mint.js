@@ -56,7 +56,7 @@ const Mint = () => {
       <div className="container max-w-6xl mx-auto flex flex-col items-center pt-4">
         <div className="flex flex-col items-center">
 
-          <span className="text-th-accent-dark text-8xl">On Rinkeby Testnet</span>
+          <span className="text-th-accent-dark text-6xl">* Rinkeby Testnet *</span>
           <br />
           <span className="text-th-accent-dark text-4xl">Mint your Feather</span>
 
