@@ -15,14 +15,6 @@ const Header = () => {
     setStatus(walletResponse.status);
   };
 
-  /* useEffect(async () => {
-    const walletResponse = await getCurrentWalletConnected();
-    setWalletAddress(walletResponse.address);
-    setStatus(walletResponse.status);
-
-    addWalletListener();
-  }, []); */
-
   useEffect(() => {
     async function fetchData() {
       const walletResponse = await getCurrentWalletConnected();
@@ -56,7 +48,7 @@ const Header = () => {
       </Head>
 
       <header className="sticky inset-x-0 top-0 z-10 h-30 min-w-full text-th-primary-medium bg-th-background-secondary">
-        <div className="flex items-center container mx-auto max-w-7xl justify-between h-full ml-4">
+        <div className="flex items-center container mx-auto max-w-7xl justify-between h-full">
           {/* Logo */}
           <Link href="#">
             <a className="text-2xl font-bold text-th-accent-dark hover:text-th-accent-medium">              
