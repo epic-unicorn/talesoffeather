@@ -11,10 +11,20 @@ export default function Header() {
             href="/#home"
             className="text-lg font-semibold rounded-lg tracking-widest focus:outline-none focus:shadow-outline"
           >
-            <h1 className="text-4xl text-gray-900 sm:text-2xl md:text-4xl lg:text-4xl">
+            <h1 className="text-2xl text-gray-900 sm:text-l md:text-xl lg:text-2xl">
               Tales of Feather
             </h1>
           </a>
+
+          <button
+            className="text-white flex px-4 py-2 mt-2 ml-10 font-medium bg-black rounded-lg"
+            type="button"
+            aria-label="button"
+            onClick={() => console.log('connect wallet')}
+          >
+            Connect wallet
+          </button>
+ 
           <button
             className="text-white cursor-pointer leading-none px-3 py-1 md:hidden outline-none focus:outline-none "
             type="button"
@@ -38,6 +48,7 @@ export default function Header() {
               <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </button>
+          
         </div>
         <div
           className={
@@ -45,7 +56,7 @@ export default function Header() {
             (navbarOpen ? " flex" : " hidden")
           }
         >
-          <nav className="flex-col flex-grow ">
+          <nav className="flex-col flex-grow">
             <ul className="flex flex-grow justify-end flex-wrap items-center">
               <li>
                 <a
@@ -73,7 +84,7 @@ export default function Header() {
                 >
                   Team
                 </a>
-              </li>                            
+              </li>
             </ul>
           </nav>
         </div>
