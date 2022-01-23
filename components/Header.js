@@ -51,6 +51,7 @@ export default function Header() {
                 <a
                   href="#collection"
                   className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  onClick={() => setNavbarOpen(!navbarOpen)}
                 >
                   Collection
                 </a>
@@ -59,6 +60,7 @@ export default function Header() {
                 <a
                   href="#roadmap"
                   className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  onClick={() => setNavbarOpen(!navbarOpen)}
                 >
                   Roadmap
                 </a>
@@ -67,6 +69,7 @@ export default function Header() {
                 <a
                   href="#team"
                   className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  onClick={() => setNavbarOpen(!navbarOpen)}
                 >
                   Team
                 </a>

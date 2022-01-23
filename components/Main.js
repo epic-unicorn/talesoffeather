@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Main() {
   return (
-    <section id="main" className="text-gray-600 body-font overflow-hidden">
+    <section id="home" className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-32 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <img
