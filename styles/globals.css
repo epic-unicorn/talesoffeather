@@ -11,12 +11,6 @@ body {
   display: grid;
 }
 
-@layer base {
-  a {
-    @apply underline;
-  }
-}
-
 :root {
   --background: theme("colors.white");
   --background-secondary: theme("colors.gray.300");
