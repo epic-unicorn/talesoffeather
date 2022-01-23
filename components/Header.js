@@ -4,8 +4,8 @@ export default function Header() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
-    <div className="fixed top-0 w-full z-30 clearNav transition duration-300 ease-in-out bg-white">
-      <div className="flex flex-col max-w-6xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+    <div className="fixed top-0 w-full z-30 clearNav transition duration-300 ease-in-out bg-gray-100">
+      <div className="flex flex-col w-full px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div className="flex flex-row items-center justify-between p-4">
           <a
             href="/#home"
