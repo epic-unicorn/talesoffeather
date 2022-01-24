@@ -34,7 +34,7 @@ export default function Main() {
             <div className="flex items-center">
               <span className="mr-3">Number of tokens</span>
               <div className="relative">
-                <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-black text-base pl-3 pr-10">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -54,7 +54,7 @@ export default function Main() {
                   </svg>
                 </span>
               </div>
-              <button className="ml-3 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+              <button className="ml-3 text-white bg-black border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">
                 Mint
               </button>
             </div>

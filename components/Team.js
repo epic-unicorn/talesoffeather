@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 export default function Team() {
   return (
@@ -13,7 +12,7 @@ export default function Team() {
           <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">
             Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
             gentrify, subway tile poke farm-to-table. Franzen you probably
-            haven't heard of them man bun deep jianbing selfies heirloom prism
+            haven&apos;t heard of them man bun deep jianbing selfies heirloom prism
             food truck ugh squid celiac humblebrag.
           </p>
         </div>

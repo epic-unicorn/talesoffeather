@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Header() {
@@ -7,24 +8,23 @@ export default function Header() {
     <div className="fixed top-0 w-full z-30 clearNav transition duration-300 ease-in-out bg-gray-100">
       <div className="flex flex-col w-full px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div className="flex flex-row items-center justify-between p-4">
-          <a
-            href="/#home"
-            className="text-lg font-semibold rounded-lg focus:outline-none focus:shadow-outline"
-          >
-            <h1 className="text-2xl text-gray-900 sm:text-l md:text-xl lg:text-2xl">
-              Tales of Feather
-            </h1>
-          </a>
+          <Link href="/#home">
+            <a className="text-lg font-semibold rounded-lg focus:outline-none focus:shadow-outline">
+              <h1 className="text-2xl text-gray-900 sm:text-l md:text-xl lg:text-2xl">
+                Tales of Feather
+              </h1>
+            </a>
+          </Link>
 
           <button
             className="text-white flex px-4 py-2 ml-5 font-medium bg-black rounded-lg"
             type="button"
             aria-label="button"
-            onClick={() => console.log('connect wallet')}
+            onClick={() => console.log("connect wallet")}
           >
             Connect wallet
           </button>
- 
+
           <button
             className="text-white cursor-pointer leading-none px-3 py-1 md:hidden outline-none focus:outline-none "
             type="button"
@@ -48,7 +48,6 @@ export default function Header() {
               <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </button>
-          
         </div>
         <div
           className={
