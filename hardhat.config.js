@@ -21,7 +21,7 @@ module.exports = {
   networks: {
     hardhat: {},
     rinkeby: {
-      url: process.env.NEXT_PUBLIC_API_URL,
+      url: process.env.API_URL,
       accounts: [`0x${process.env.PRIVATE_KEY}`],
     },
   },
