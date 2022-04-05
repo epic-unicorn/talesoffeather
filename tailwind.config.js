@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        emerald: colors.emerald,
-        fuchsia: colors.fuchsia,
+        amber: colors.amber,
+        orange: colors.orange,
         'th-background': 'var(--background)',
         'th-background-secondary': 'var(--background-secondary)',
         'th-foreground': 'var(--foreground)',
@@ -21,6 +21,9 @@ module.exports = {
         'th-accent-medium': 'var(--accent-medium)',
         'th-accent-light': 'var(--accent-light)',
       },
+      backgroundImage: {
+        'coverart': "url('../public/images/coverart.png')"
+      }
     },
   },
   variants: {

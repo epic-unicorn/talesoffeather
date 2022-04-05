@@ -9,18 +9,15 @@ import Roadmap from "../components/Roadmap";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-th-background-primary">
+    <div className="bg-th-background">
       <Head>
         <title>Tales of Feather</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <Main />
-      <Collection />
       <Roadmap />
-      <Team />
       {/* <Mint /> */}
-      <Footer />
     </div>
   );
 }
