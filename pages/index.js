@@ -14,10 +14,8 @@ export default function Home() {
         <title>Tales of Feather</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <Main />
-      <Roadmap />
-      {/* <Mint /> */}
+      <Team />
     </div>
   );
 }

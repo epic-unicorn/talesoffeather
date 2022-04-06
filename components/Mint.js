@@ -66,14 +66,14 @@ const Mint = () => {
               <span className="text-th-accent-medium">
                 Already minted: {`${totalSupply}`} of 5K
               </span>
-              <h4 className="mt-2 font-semibold text-center text-th-accent-light">
+              <h4 className="mt-2 font-semibold text-center">
                 {nftPrice} ETH{" "}
-                <span className="text-sm text-th-accent-light"> + GAS</span>
+                <span className="text-sm"> + GAS</span>
               </h4>
 
               <div className="flex items-center mt-6 text-3xl font-bold text-th-primary-light">
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-th-background rounded-md text-th-accent-light hover:bg-th-accent-dark text-center"
+                  className="flex items-center justify-center w-12 h-12 bg-th-background rounded-md text-center"
                   onClick={incrementCount}
                 >
                   <svg
