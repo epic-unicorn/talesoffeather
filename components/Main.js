@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import ExampleNFT from "../public/images/example.png";
 
@@ -174,7 +173,7 @@ export default function Main() {
       </section>
 
       {/* Footer */}
-      <section className="py-20">
+      <section className="py-10">
         <div className="flex justify-center">
           <a href="#">
             <svg
