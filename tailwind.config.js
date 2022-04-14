@@ -2,7 +2,6 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -22,7 +21,8 @@ module.exports = {
         'th-accent-light': 'var(--accent-light)',
       },
       backgroundImage: {
-        'coverart': "url('../public/images/coverart.png')"
+        'coverart': "url('../public/images/coverart.png')",
+        'coverart-small': "url('../public/images/coverart-small.png')"
       }
     },
   },

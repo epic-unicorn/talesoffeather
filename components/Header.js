@@ -5,27 +5,20 @@ export default function Header() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
-    <header className="sticky inset-x-0 top-0 z-10 h-30 pt-10">
-        <div className="flex items-center container mx-auto max-w-4xl justify-around bg-th-background-secondary rounded-full ">
-
+    <div className="h-screen bg-cover bg-coverart">
+      <header className="top-0 z-10 h-30 pt-10">
+        <div className="flex items-center container mx-auto max-w-2xl justify-evenly bg-th-background-secondary rounded-full ">
           <nav aria-label="Main Menu">
-            <ul className="flex space-x-8 p-3">              
-
+            <ul className="flex p-3">
               <li className="cursor-pointer px-4 py-2 font-extrabold text-th-primary-dark border bg-th-accent-dark border-th-accent-medium rounded-full">
-                <a
-                  className=""
-                  id="walletButton" 
-                >
+                <a className="" id="walletButton">
                   <span>Connect wallet</span>
-                
                 </a>
               </li>
             </ul>
           </nav>
-
-          <nav aria-label="Main Menu" className="overflow-hidden">
-            <ul className="flex space-x-8">              
-
+          <nav aria-label="Main Menu" className="overflow-hidden ">
+            <ul className="flex space-x-8">
               <li className="cursor-pointer px-4 py-2 font-extrabold text-th-primary-dark">
                 <span>Item 1</span>
               </li>
@@ -75,10 +68,17 @@ export default function Header() {
                   </svg>
                 </a>
               </li>
-
             </ul>
           </nav>
         </div>
-      </header>    
+      </header>
+      <div class="grid grid-flow-row-dense h-screen justify-center grid-cols-3 grid-rows-3">
+        <div class="col-span-2">01</div>
+        <div class="col-span-2">02</div>
+        <div>03</div>
+        <div>04</div>
+        <div>05</div>
+      </div>
+    </div>
   );
 }
