@@ -3,24 +3,24 @@ import Link from "next/link";
 export default function Main() {
   return (
     <body>
-      <nav class="fixed z-10 md:flex hidden w-full justify-center">
-        <div class="my-8 flex w-fit justify-evenly rounded-full bg-th-background-secondary uppercase">
-          <div class="flex items-center">
-            <button class="m-2 bg-th-accent-light p-2 w-28 rounded-full border-2 border-th-accent-dark uppercase">
+      <nav className="fixed z-10 md:flex hidden w-full justify-center">
+        <div className="my-8 flex w-fit justify-evenly rounded-full bg-th-background-secondary uppercase">
+          <div className="flex items-center">
+            <button className="m-2 bg-th-accent-light p-2 w-28 rounded-full border-2 border-th-accent-dark uppercase">
               Mint
             </button>
           </div>
-          <ul class="items-center flex md:px-4">
-            <li class="mx-3">
+          <ul className="items-center flex md:px-4">
+            <li className="mx-3">
               <a href="#">About</a>
             </li>
-            <li class="mx-3">
+            <li className="mx-3">
               <a href="#">Adventuremap</a>
             </li>
-            <li class="mx-3">
+            <li className="mx-3">
               <a href="#">FAQ</a>
             </li>
-            <li class="mx-3">
+            <li className="mx-3">
               <a href="#">Team</a>
             </li>
           </ul>
@@ -65,56 +65,56 @@ export default function Main() {
         </div>
       </nav>
 
-      <section class="lg:bg-coverart bg-coverart-small flex h-screen flex-col justify-center bg-cover px-4 pt-24 text-center md:mt-0 md:flex-row md:items-center md:justify-between md:px-12 md:text-left lg:px-12">
-        <div class="flex justify-around md:mt-0 md:block md:flex-1"></div>
-        <div class="flex justify-around md:mt-0 md:block md:flex-1"></div>
-        <div class="md:mr-10 md:flex-1 md:max-w-xl bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
-          <h1 class="mb-7 text-5xl uppercase">Tales of Feather</h1>
-          <p class="mb-7">
+      <section className="lg:bg-coverart bg-coverart-small flex h-screen flex-col justify-center bg-cover px-4 pt-24 text-center md:mt-0 md:flex-row md:items-center md:justify-between md:px-12 md:text-left lg:px-12">
+        <div className="flex justify-around md:mt-0 md:block md:flex-1"></div>
+        <div className="flex justify-around md:mt-0 md:block md:flex-1"></div>
+        <div className="md:mr-10 md:flex-1 md:max-w-xl bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
+          <h1 className="mb-7 text-5xl uppercase">Tales of Feather</h1>
+          <p className="mb-7">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
             harum tempore consectetur voluptas, cumque nobis laboriosam
             voluptatem.
           </p>
           <div>
-            <button class="mr-2 mb-2 rounded-full border-2 border-solid border-th-accent-dark bg-th-accent-light px-6 py-2 w-28 uppercase">
+            <button className="mr-2 mb-2 rounded-full border-2 border-solid border-th-accent-dark bg-th-accent-light px-6 py-2 w-28 uppercase">
               Mint
             </button>
           </div>
         </div>
       </section>
 
-      <section class="bg-th-background flex flex-col justify-center p-24">
+      <section className="bg-th-background flex flex-col justify-center p-24">
         <span className="text-6xl uppercase justify-center flex">
           Waar je ook kijkt er is altijd iets te ontdekken
         </span>
       </section>
 
-      <section class="flex  flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-between md:px-12 md:text-left lg:px-12">
-        <div class="md:mr-10 md:flex-1 md:max-w-lg bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
-          <h1 class="mb-7 text-5xl uppercase">
+      <section className="flex  flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-between md:px-12 md:text-left lg:px-12">
+        <div className="md:mr-10 md:flex-1 md:max-w-lg bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
+          <h1 className="mb-7 text-5xl uppercase">
             Discover adventure in every trait
           </h1>
-          <p class="mb-7">
+          <p className="mb-7">
             Each realm has many different traits. blalala
           </p>
         </div>
-        <div class="flex justify-around md:mt-0 md:block md:flex-1">
-          <div class="flex flex-col lg:flex-row">
-            <div class="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
+        <div className="flex justify-around md:mt-0 md:block md:flex-1">
+          <div className="flex flex-col lg:flex-row">
+            <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
               <img
-                class="object-cover rounded-2xl"
+                className="object-cover rounded-2xl"
                 src="https://idisqus.com/wp-content/uploads/2021/06/macOS-Monterey-wallpaper-purple-600x600-1.jpg"
               />
             </div>
-            <div class="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
+            <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
               <img
-                class="object-cover rounded-2xl"
+                className="object-cover rounded-2xl"
                 src="https://idisqus.com/wp-content/uploads/2021/06/macOS-Monterey-wallpaper-purple-600x600-1.jpg"
               />
             </div>
-            <div class="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
+            <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
               <img
-                class="object-cover rounded-2xl"
+                className="object-cover rounded-2xl"
                 src="https://idisqus.com/wp-content/uploads/2021/06/macOS-Monterey-wallpaper-purple-600x600-1.jpg"
               />
             </div>
@@ -122,24 +122,24 @@ export default function Main() {
         </div>
       </section>
 
-      <section class="flex  flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-center md:px-12 md:text-left lg:px-12">
-        <div class="md:mr-10 md:flex-1 md:max-w-2xl p-10 rounded-2xl">
+      <section className="flex  flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-center md:px-12 md:text-left lg:px-12">
+        <div className="md:mr-10 md:flex-1 md:max-w-2xl p-10 rounded-2xl">
           <img
-            class="object-cover rounded-2xl"
+            className="object-cover rounded-2xl"
             src="https://idisqus.com/wp-content/uploads/2021/06/macOS-Monterey-wallpaper-purple-600x600-1.jpg"
           />
         </div>
-        <div class="md:mr-10 md:flex-1 md:max-w-sm bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
-          <h1 class="mb-7 text-5xl uppercase">Explore cool realms</h1>
-          <p class="mb-7 font-normal">There are 5 realms</p>
+        <div className="md:mr-10 md:flex-1 md:max-w-sm bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
+          <h1 className="mb-7 text-5xl uppercase">Explore cool realms</h1>
+          <p className="mb-7 font-normal">There are 5 realms</p>
         </div>
       </section>
 
-      <section class="bg-black py-20">
-        <div class="flex justify-center">
+      <section className="bg-black py-20">
+        <div className="flex justify-center">
           <a href="#">
             <svg
-              class="w-6 h-6 mx-4 text-white fill-current"
+              className="w-6 h-6 mx-4 text-white fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -148,7 +148,7 @@ export default function Main() {
           </a>
           <a href="#">
             <svg
-              class="w-6 h-6 text-white fill-current"
+              className="w-6 h-6 text-white fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -157,7 +157,7 @@ export default function Main() {
           </a>
         </div>
 
-        <div class="text-white font-montserrat text-sm flex justify-center pt-4">
+        <div className="text-white font-montserrat text-sm flex justify-center pt-4">
           © 2022 Tales of Feather
         </div>
       </section>
