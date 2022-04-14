@@ -69,13 +69,13 @@ export default function Main() {
         <div class="flex justify-around md:mt-0 md:block md:flex-1"></div>
         <div class="flex justify-around md:mt-0 md:block md:flex-1"></div>
         <div class="md:mr-10 md:flex-1 md:max-w-xl bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
-          <h1 class="mb-7 text-5xl font-bold">Tales of Feather</h1>
-          <p class="mb-7 font-normal">
+          <h1 class="mb-7 text-5xl uppercase">Tales of Feather</h1>
+          <p class="mb-7">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
             harum tempore consectetur voluptas, cumque nobis laboriosam
             voluptatem.
           </p>
-          <div class="font-montserrat">
+          <div>
             <button class="mr-2 mb-2 rounded-full border-2 border-solid border-th-accent-dark bg-th-accent-light px-6 py-2 w-28 uppercase">
               Mint
             </button>
@@ -91,10 +91,10 @@ export default function Main() {
 
       <section class="flex  flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-between md:px-12 md:text-left lg:px-12">
         <div class="md:mr-10 md:flex-1 md:max-w-lg bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
-          <h1 class="mb-7 text-5xl font-bold">
+          <h1 class="mb-7 text-5xl uppercase">
             Discover adventure in every trait
           </h1>
-          <p class="mb-7 font-normal">
+          <p class="mb-7">
             Each realm has many different traits. blalala
           </p>
         </div>
@@ -122,7 +122,7 @@ export default function Main() {
         </div>
       </section>
 
-      <section class="flex  flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-between md:px-12 md:text-left lg:px-12">
+      <section class="flex  flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-center md:px-12 md:text-left lg:px-12">
         <div class="md:mr-10 md:flex-1 md:max-w-2xl p-10 rounded-2xl">
           <img
             class="object-cover rounded-2xl"
@@ -130,7 +130,7 @@ export default function Main() {
           />
         </div>
         <div class="md:mr-10 md:flex-1 md:max-w-sm bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
-          <h1 class="mb-7 text-5xl font-bold uppercase">Explore cool realms</h1>
+          <h1 class="mb-7 text-5xl uppercase">Explore cool realms</h1>
           <p class="mb-7 font-normal">There are 5 realms</p>
         </div>
       </section>
