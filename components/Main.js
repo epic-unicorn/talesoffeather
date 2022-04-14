@@ -1,8 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
+import ExampleNFT from "../public/images/example.png";
 
 export default function Main() {
   return (
     <body>
+      {/* Header */}
       <nav className="fixed z-10 md:flex hidden w-full justify-center">
         <div className="my-8 flex w-fit justify-evenly rounded-full bg-th-background-secondary uppercase">
           <div className="flex items-center">
@@ -65,6 +68,7 @@ export default function Main() {
         </div>
       </nav>
 
+      {/* Hero */}
       <section className="lg:bg-coverart bg-coverart-small flex h-screen flex-col justify-center bg-cover px-4 pt-24 text-center md:mt-0 md:flex-row md:items-center md:justify-between md:px-12 md:text-left lg:px-12">
         <div className="flex justify-around md:mt-0 md:block md:flex-1"></div>
         <div className="flex justify-around md:mt-0 md:block md:flex-1"></div>
@@ -83,51 +87,41 @@ export default function Main() {
         </div>
       </section>
 
+      {/* Atttention message */}
       <section className="bg-th-background flex flex-col justify-center p-24">
         <span className="text-6xl uppercase justify-center flex">
-          Waar je ook kijkt er is altijd iets te ontdekken
+          Waar je ook kijkt er is altijd iets te
+          <span className="text-pink-400 whitespace-pre"> ontdekken</span>
         </span>
       </section>
 
+      {/* Traits */}
       <section className="flex  flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-between md:px-12 md:text-left lg:px-12">
         <div className="md:mr-10 md:flex-1 md:max-w-lg bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
           <h1 className="mb-7 text-5xl uppercase">
             Discover adventure in every trait
           </h1>
-          <p className="mb-7">
-            Each realm has many different traits. blalala
-          </p>
+          <p className="mb-7">Each realm has many different traits. blalala</p>
         </div>
         <div className="flex justify-around md:mt-0 md:block md:flex-1">
           <div className="flex flex-col lg:flex-row">
             <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
-              <img
-                className="object-cover rounded-2xl"
-                src="https://idisqus.com/wp-content/uploads/2021/06/macOS-Monterey-wallpaper-purple-600x600-1.jpg"
-              />
+              <Image src={ExampleNFT} className="rounded-2xl" />
             </div>
             <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
-              <img
-                className="object-cover rounded-2xl"
-                src="https://idisqus.com/wp-content/uploads/2021/06/macOS-Monterey-wallpaper-purple-600x600-1.jpg"
-              />
+              <Image src={ExampleNFT} className="rounded-2xl" />
             </div>
             <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
-              <img
-                className="object-cover rounded-2xl"
-                src="https://idisqus.com/wp-content/uploads/2021/06/macOS-Monterey-wallpaper-purple-600x600-1.jpg"
-              />
+              <Image src={ExampleNFT} className="rounded-2xl" />
             </div>
           </div>
         </div>
       </section>
 
+      {/* Realms */}
       <section className="flex  flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-center md:px-12 md:text-left lg:px-12">
-        <div className="md:mr-10 md:flex-1 md:max-w-2xl p-10 rounded-2xl">
-          <img
-            className="object-cover rounded-2xl"
-            src="https://idisqus.com/wp-content/uploads/2021/06/macOS-Monterey-wallpaper-purple-600x600-1.jpg"
-          />
+        <div className="md:mr-10 md:flex-1 md:max-w-2xl p-10">
+          <Image src={ExampleNFT} className="rounded-3xl" />
         </div>
         <div className="md:mr-10 md:flex-1 md:max-w-sm bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
           <h1 className="mb-7 text-5xl uppercase">Explore cool realms</h1>
@@ -135,11 +129,56 @@ export default function Main() {
         </div>
       </section>
 
-      <section className="bg-black py-20">
+      {/* Story */}
+      <section className="flex flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-center md:px-12 md:text-left lg:px-12">
+        <div className="md:mr-10 md:flex-1 md:max-w-lg bg-white bg-opacity-50 md:bg-opacity-0 p-10 rounded-3xl">
+          <h1 className="mb-7 text-5xl uppercase">Story</h1>
+          <p className="mb-7">Er was eens een...</p>
+          <button className="mr-2 mb-2 rounded-full border-2 border-solid border-th-accent-dark bg-th-accent-light px-6 py-2 w-28 uppercase">
+            Blalala
+          </button>
+        </div>
+        <div className="md:mr-10 md:flex-1 md:max-w-2xl p-10">
+          <Image src={ExampleNFT} className="rounded-3xl" />
+        </div>
+      </section>
+
+      {/* Atttention message */}
+      <section className="bg-th-background flex flex-col justify-center p-24">
+        <span className="text-6xl uppercase justify-center flex">
+          Adventuremap
+        </span>
+        <p className="pt-10 flex text-center justify-items-center mx-48">
+          We will continue to create delightful art and work on developing &
+          growing our community and the WonderPals brand. We have plans to open
+          an online gift shop with an array of products & collectibles that will
+          include items like apparel, plushies, stickers, and more! We will be
+          collaborating with various projects & talented artists, and will be
+          working together to contribute to our future Collabs Collection. We
+          have many ideas for the future of WonderPals, so join us on this
+          journey as we launch our project and expand the WonderPals universe!
+        </p>
+        <div className="flex justify-around md:mt-10 md:block">
+          <div className="flex flex-col lg:flex-row">
+            <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
+              <Image src={ExampleNFT} className="rounded-2xl" />
+            </div>
+            <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
+              <Image src={ExampleNFT} className="rounded-2xl" />
+            </div>
+            <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
+              <Image src={ExampleNFT} className="rounded-2xl" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <section className="py-20">
         <div className="flex justify-center">
           <a href="#">
             <svg
-              className="w-6 h-6 mx-4 text-white fill-current"
+              className="w-6 h-6 mx-4 text-black fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -148,7 +187,7 @@ export default function Main() {
           </a>
           <a href="#">
             <svg
-              className="w-6 h-6 text-white fill-current"
+              className="w-6 h-6 text-black fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -156,8 +195,7 @@ export default function Main() {
             </svg>
           </a>
         </div>
-
-        <div className="text-white font-montserrat text-sm flex justify-center pt-4">
+        <div className="text-black text-sm flex justify-center pt-4">
           © 2022 Tales of Feather
         </div>
       </section>
