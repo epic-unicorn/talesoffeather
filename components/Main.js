@@ -13,7 +13,7 @@ export default function Main() {
         className="fixed z-10 md:flex hidden w-full justify-center font-amatic text-3xl font-black"
       >
         <div className="my-8 flex w-fit justify-evenly rounded-full bg-th-background-secondary uppercase">
-          <div className="w-24 m-2 ml-6 items-center">
+          <div className="w-24 m-2 mt-3 ml-6 items-center">
             <Link href="#hero">
               <a>
                 <Image src={MintButtonMini} />
