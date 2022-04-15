@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 export default function Contact() {
   return (
-    <div className="text-black">
+    <div className="text-black bg-th-background">
       <Head>
         <title>Tales of Feather</title>
         <link rel="icon" href="/favicon.ico" />
