@@ -19,9 +19,10 @@ module.exports = {
   solidity: "0.8.9",
   defaultNetwork: "rinkeby",
   networks: {
-    hardhat: {},
+    hardhat: {
+    },
     rinkeby: {
-      url: process.env.NEXT_PUBLIC_API_URL,
+      url: process.env.API_URL,
       accounts: [`0x${process.env.PRIVATE_KEY}`],
     },
   },

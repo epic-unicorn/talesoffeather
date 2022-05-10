@@ -78,7 +78,6 @@ contract FeatherTest is ERC721, Ownable, ERC721Enumerable {
     {
         uint256 tokenCount = balanceOf(_owner);
         if (tokenCount == 0) {
-            // Return an empty array
             return new uint256[](0);
         } else {
             uint256[] memory result = new uint256[](tokenCount);
@@ -188,7 +187,7 @@ contract FeatherTest is ERC721, Ownable, ERC721Enumerable {
 
         if (isRevealed == false) {
             return
-                "ipfs://QmYGAp3Gz1m5UmFhV4PVRRPYE3HL1AmCwEKFPxng498vfb/hidden.json";
+                "ipfs://QmXWUTUkBuRZZsM1ivXZyYb3gKykkqSkfz449v9QPvq3DN/talesoffeather.json";
         }
 
         return
@@ -196,8 +195,7 @@ contract FeatherTest is ERC721, Ownable, ERC721Enumerable {
                 ? string(
                     abi.encodePacked(
                         currentBaseURI,
-                        tokenId.toString(),
-                        ".json"
+                        tokenId.toString()
                     )
                 )
                 : "";
