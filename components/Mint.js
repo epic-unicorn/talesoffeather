@@ -73,8 +73,7 @@ const Mint = () => {
 
               <div className="flex items-center mt-6 text-3xl font-bold">
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-th-background hover:bg-gray-500 rounded-md text-center"
-                  onClick={incrementCount}
+                  className="flex items-center justify-center w-12 h-12 bg-th-background hover:bg-gray-500 rounded-md text-center" onClick={incrementCount}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

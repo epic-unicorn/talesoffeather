@@ -12,57 +12,18 @@ body {
 }
 
 :root {
-  --background: theme("colors.gray.400");
-  --background-secondary: theme("colors.gray.300");
+  --background: theme("colors.orange.100");
+  --background-secondary: theme("colors.amber.50");
 
   --primary-dark: theme("colors.gray.900");
   --primary-medium: theme("colors.gray.700");
   --primary-light: theme("colors.gray.500");
 
-  --accent-dark: theme("colors.indigo.800");
-  --accent-medium: theme("colors.indigo.600");
-  --accent-light: theme("colors.indigo.300");
+  --accent-dark: theme("colors.amber.400");
+  --accent-medium: theme("colors.amber.300");
+  --accent-light: theme("colors.amber.200");
 
   --secondary-dark: theme("colors.gray.600");
   --secondary-medium: theme("colors.gray.800");
   --secondary-light: theme("colors.gray.900");
-}
-
-[data-theme="dark"] {
-  --background: theme("colors.gray.600");
-  --background-secondary: theme("colors.gray.800");
-
-  --accent-dark: theme("colors.fuchsia.900");
-  --accent-medium: theme("colors.fuchsia.700");
-  --accent-light: theme("colors.fuchsia.500");
-
-  --primary-dark: theme("colors.gray.600");
-  --primary-medium: theme("colors.gray.400");
-  --primary-light: theme("colors.gray.200");
-
-  --secondary-dark: theme("colors.gray.800");
-  --secondary-medium: theme("colors.gray.300");
-  --secondary-light: theme("colors.gray.100");
-}
-
-[data-theme="emerald"] {
-  --background: theme("colors.white");
-  --background-secondary: theme("colors.emerald.400");
-
-  --accent-dark: theme("colors.emerald.900");
-  --accent-medium: theme("colors.emerald.700");
-  --accent-light: theme("colors.emerald.500");
-}
-
-[data-theme="pink"] {
-  --background: theme("colors.gray.900");
-  --background-secondary: theme("colors.pink.400");
-
-  --accent-dark: theme("colors.pink.900");
-  --accent-medium: theme("colors.pink.700");
-  --accent-light: theme("colors.pink.500");
-
-  --primary-dark: theme("colors.gray.800");
-  --primary-medium: theme("colors.gray.600");
-  --primary-light: theme("colors.gray.200");
 }
