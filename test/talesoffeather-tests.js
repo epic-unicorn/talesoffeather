@@ -10,16 +10,11 @@ describe("Token contract", function () {
   let addr2;
   let addrs;
 
-  // `beforeEach` will run before each test, re-deploying the contract every
-  // time. It receives a callback, which can be async.
+  // 'before' all other tests first deploy and set baseURI
   before(async function () {
-    // Get the ContractFactory and Signers here.
     Token = await ethers.getContractFactory("FeatherTest");
     [owner, addr1, addr2, ...addrs] = await ethers.getSigners(); 
 
-    // To deploy our contract, we just have to call Token.deploy() and await
-    // for it to be deployed(), which happens once its transaction has been
-    // mined.
     hardhatToken = await Token.deploy();
 
     await hardhatToken.deployed();
@@ -27,21 +22,10 @@ describe("Token contract", function () {
     console.log("FeatherTest deployed to:", hardhatToken.address);
   });
 
-  // You can nest describe calls to create subsections.
   describe("Deployment", function () {
-    // `it` is another Mocha function. This is the one you use to define your
-    // tests. It receives the test name, and a callback function.
-
-    // If the callback function is async, Mocha will `await` it.
     it("Should set the right owner", async function () {
-      // Expect receives a value, and wraps it in an Assertion object. These
-      // objects have a lot of utility methods to assert values.
-
-      // This test expects the owner variable stored in the contract to be equal
-      // to our Signer's owner.
       console.log("FeatherTest owner:", owner.address)
       expect(await hardhatToken.owner()).to.equal(owner.address);
-
     });
   });
 
