@@ -55,11 +55,7 @@ const Mint = () => {
     <main id="main" className="h-screen py-16 bg-pattern">
       <div className="container max-w-6xl mx-auto flex flex-col items-center pt-4">
         <div className="flex flex-col items-center">
-
-          <span className="text-6xl">* Rinkeby Testnet *</span>
-          <br />
-          <span className="text-4xl">Mint your Feather</span>
-
+          <span className="text-4xl">Testing</span><br />
           {isSaleActive ? (
             <>
               {/* Minted NFT Ratio */}
@@ -73,7 +69,7 @@ const Mint = () => {
 
               <div className="flex items-center mt-6 text-3xl font-bold">
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-th-background hover:bg-gray-500 rounded-md text-center" onClick={incrementCount}
+                  className="flex items-center justify-center w-12 h-12 bg-gray-400 hover:bg-gray-500 rounded-md text-center" onClick={incrementCount}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +90,7 @@ const Mint = () => {
                 <h2 className="mx-8">{count}</h2>
 
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-th-background hover:bg-gray-500 rounded-md text-center"
+                  className="flex items-center justify-center w-12 h-12 bg-gray-400 hover:bg-gray-500 rounded-md text-center"
                   onClick={decrementCount}
                 >
                   <svg
@@ -116,7 +112,7 @@ const Mint = () => {
 
               {/* Mint Button */}
               <button
-                className="mt-6 py-2 px-4 text-center uppercase hover:bg-gray-500 bg-th-background rounded"
+                className="mt-6 py-2 px-4 text-center uppercase hover:bg-gray-500 bg-gray-400 rounded"
                 onClick={mintFeather}
               >
                 Mint now!
