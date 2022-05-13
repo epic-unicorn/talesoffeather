@@ -2,7 +2,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(process.env.API_URL);
 
 const contract = require("../artifacts/contracts/FeatherTest.sol/FeatherTest.json");
-const contractAddress = "0x7f69e0cbf7eA7Ed5f807E599D3404aEBC19B17D7";
+const contractAddress = "0xC0a19730710dc95A90B03376a0C5455A71912c19";
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
 export const connectWallet = async () => {
