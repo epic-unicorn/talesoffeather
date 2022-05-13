@@ -56,14 +56,14 @@ const Mint = () => {
       <div className="container max-w-6xl mx-auto flex flex-col items-center pt-4">
         <div className="flex flex-col items-center">
 
-          <span className="text-th-accent-dark text-6xl">* Rinkeby Testnet *</span>
+          <span className="text-6xl">* Rinkeby Testnet *</span>
           <br />
-          <span className="text-th-accent-dark text-4xl">Mint your Feather</span>
+          <span className="text-4xl">Mint your Feather</span>
 
           {isSaleActive ? (
             <>
               {/* Minted NFT Ratio */}
-              <span className="text-th-accent-medium">
+              <span>
                 Already minted: {`${totalSupply}`} of 5K
               </span>
               <h4 className="mt-2 font-semibold text-center">
@@ -71,10 +71,9 @@ const Mint = () => {
                 <span className="text-sm"> + GAS</span>
               </h4>
 
-              <div className="flex items-center mt-6 text-3xl font-bold text-th-primary-light">
+              <div className="flex items-center mt-6 text-3xl font-bold">
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-th-background rounded-md text-center"
-                  onClick={incrementCount}
+                  className="flex items-center justify-center w-12 h-12 bg-th-background hover:bg-gray-500 rounded-md text-center" onClick={incrementCount}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +94,7 @@ const Mint = () => {
                 <h2 className="mx-8">{count}</h2>
 
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-th-background rounded-md hover:bg-th-accent-dark text-th-accent-light text-center"
+                  className="flex items-center justify-center w-12 h-12 bg-th-background hover:bg-gray-500 rounded-md text-center"
                   onClick={decrementCount}
                 >
                   <svg
@@ -117,14 +116,14 @@ const Mint = () => {
 
               {/* Mint Button */}
               <button
-                className="mt-6 py-2 px-4 text-center uppercase hover:bg-th-accent-dark bg-th-background text-th-accent-light rounded"
+                className="mt-6 py-2 px-4 text-center uppercase hover:bg-gray-500 bg-th-background rounded"
                 onClick={mintFeather}
               >
                 Mint now!
               </button>
             </>
           ) : (
-            <p className="text-white text-2xl mt-8">
+            <p className="text-2xl mt-8">
               Sale is not started yet...
             </p>
           )}
