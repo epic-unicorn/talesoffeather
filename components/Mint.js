@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useStatus } from "../context/statusContext";
-import Image from "next/image";
 
 import {
+  getContractAddress,
   getMaxMintAmount,
   getTotalSupply,
   getNftPrice,
   mintNFT,
   getSaleState,
+  connectWallet,
+  getCurrentWalletConnected,
 } from "../utils/interact";
 
 const Mint = () => {
@@ -18,13 +20,46 @@ const Mint = () => {
   const [totalSupply, setTotalSupply] = useState(0);
   const [nftPrice, setNftPrice] = useState("0.001");
   const [isSaleActive, setIsSaleActive] = useState(false);
+  const [contractAddress, setContractAddress] = useState("0x");
+  const [walletAddress, setWalletAddress] = useState("");
+
+  const connectWalletPressed = async () => {    
+    const walletResponse = await connectWallet();
+    setWalletAddress(walletResponse.address);
+    setStatus(walletResponse.status);
+  };
 
   useEffect(async () => {
+    await getCurrentWallet();
+
     setMaxMintAmount(await getMaxMintAmount());
     setNftPrice(await getNftPrice());
     setIsSaleActive(await getSaleState());
+    setContractAddress(await getContractAddress());
     await updateTotalSupply();
   });
+
+  const getCurrentWallet = async () => {
+    const walletResponse = await getCurrentWalletConnected();
+    console.log(walletResponse);
+    setWalletAddress(walletResponse.address);
+    setStatus(walletResponse.status);
+    addWalletListener();
+  };
+
+  const addWalletListener = () => {
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", async (accounts) => {
+        if (accounts.length > 0) {
+          setWalletAddress(accounts[0]);
+          setStatus("");
+        } else {
+          setWalletAddress("");
+          setStatus("Connect to Metamask using Connect Wallet button.");
+        }
+      });
+    }
+  };
 
   const updateTotalSupply = async () => {
     const mintedCount = await getTotalSupply();
@@ -47,29 +82,43 @@ const Mint = () => {
     const { status } = await mintNFT(count);
     setStatus(status);
 
-    // We minted a new Feather, so we need to update the total supply
+    // feather minted, update total supply
     updateTotalSupply();
   };
 
   return (
     <main id="main" className="h-screen py-16 bg-pattern">
-      <div className="container max-w-6xl mx-auto flex flex-col items-center pt-4">
-        <div className="flex flex-col items-center">
-          <span className="text-4xl">Testing</span><br />
+        <div className="flex flex-col items-center ">
+          <button className="mb-10 p-3 bg-amber-400 rounded-full hover:bg-amber-500 font-medium" id="walletButton" onClick={connectWalletPressed} >
+            {walletAddress.length > 0 ? (          
+              "Wallet Address: " +
+              String(walletAddress).substring(0, 6) +
+              "..." +
+              String(walletAddress).substring(38)
+            ) : (
+              <span>Connect wallet</span>
+            )}
+          </button>
+          <a
+            className="underline mb-10 hover:text-blue-800"
+            target="_blank"
+            href={"https://rinkeby.etherscan.io/address/" + contractAddress}
+            rel="noopener noreferrer"
+          >
+            {contractAddress}
+          </a>
+          
           {isSaleActive ? (
             <>
+              {nftPrice} Ξ<span className="text-sm"></span>
               {/* Minted NFT Ratio */}
-              <span>
-                Already minted: {`${totalSupply}`} of 5K
+              <span className="text-xl font-medium">
+                {`${totalSupply}`} / 5000
               </span>
-              <h4 className="mt-2 font-semibold text-center">
-                {nftPrice} ETH{" "}
-                <span className="text-sm"> + GAS</span>
-              </h4>
-
-              <div className="flex items-center mt-6 text-3xl font-bold">
+              <div className="flex items-center mt-6 text-3xl font-bold bg-amber-400 rounded-full">
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-gray-400 hover:bg-gray-500 rounded-md text-center" onClick={incrementCount}
+                  className="flex items-center justify-center h-12 w-12 hover:bg-amber-500 text-center rounded-full"
+                  onClick={incrementCount}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +139,7 @@ const Mint = () => {
                 <h2 className="mx-8">{count}</h2>
 
                 <button
-                  className="flex items-center justify-center w-12 h-12 bg-gray-400 hover:bg-gray-500 rounded-md text-center"
+                  className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-amber-500 text-center"
                   onClick={decrementCount}
                 >
                   <svg
@@ -109,31 +158,28 @@ const Mint = () => {
                   </svg>
                 </button>
               </div>
-
               {/* Mint Button */}
               <button
-                className="mt-6 py-2 px-4 text-center uppercase hover:bg-gray-500 bg-gray-400 rounded"
+                className="mt-10 h-12 w-48 text-center uppercase text-xl font-bold bg-amber-400 hover:bg-amber-500 rounded-full"
                 onClick={mintFeather}
               >
-                Mint now!
+                Mint Feather
               </button>
             </>
           ) : (
-            <p className="text-2xl mt-8">
-              Sale is not started yet...
-            </p>
+            <p className="text-2xl mt-8">Sale is not started yet...</p>
           )}
 
           {/* Status */}
 
-          <span className="text-th-accent-medium">
-          {status && (
-            <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-black rounded-md ">
-              {status}
-            </div>
-          )}</span>
+          <span className="text-black">
+            {status && (
+              <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-black ">
+                {status}
+              </div>
+            )}
+          </span>
         </div>
-      </div>
     </main>
   );
 };

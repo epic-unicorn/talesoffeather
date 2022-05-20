@@ -5,6 +5,11 @@ const contract = require("../artifacts/contracts/FeatherTest.sol/FeatherTest.jso
 const contractAddress = "0xC0a19730710dc95A90B03376a0C5455A71912c19";
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
+export const getContractAddress = async () =>
+{
+  return contractAddress;
+};
+
 export const connectWallet = async () => {
   if (window.ethereum) {
     try {
@@ -139,15 +144,15 @@ export const mintNFT = async (mintAmount) => {
     };
   }
 
-  //set up your Ethereum transaction
+  // set up your Ethereum transaction
   const transactionParameters = {
-    to: contractAddress, // Required except during contract publications.
-    from: window.ethereum.selectedAddress, // must match user's active address.
+    to: contractAddress,
+    from: window.ethereum.selectedAddress, 
     value: parseInt(web3.utils.toWei("0.001", "ether") * mintAmount).toString(
       16
     ), // hex
     gasLimit: "0",
-    data: nftContract.methods.mintFeather(mintAmount).encodeABI(), //make call to NFT smart contract
+    data: nftContract.methods.mintFeather(mintAmount).encodeABI(),
   };
   //sign the transaction via Metamask
   try {

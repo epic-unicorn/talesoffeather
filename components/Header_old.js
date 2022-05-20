@@ -6,7 +6,6 @@ import { connectWallet, getCurrentWalletConnected } from "../utils/interact";
 const Header = () => {
   const { setStatus } = useStatus();
   const [walletAddress, setWalletAddress] = useState("");
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet();
