@@ -22,15 +22,13 @@ const Mint = () => {
   const [isSaleActive, setIsSaleActive] = useState(false);
   const [contractAddress, setContractAddress] = useState("0x");
   const [walletAddress, setWalletAddress] = useState("");
-
-  const connectWalletPressed = async () => {    
-    const walletResponse = await connectWallet();
-    setWalletAddress(walletResponse.address);
-    setStatus(walletResponse.status);
-  };
+  const [currentAccount, setCurrentAccount] = useState("");
+  const [correctNetwork, setCorrectNetwork] = useState(false);
+  const [loadingState, setLoadingState] = useState(0);
 
   useEffect(async () => {
-    await getCurrentWallet();
+    checkIfWalletIsConnected();
+    checkCorrectNetwork();
 
     setMaxMintAmount(await getMaxMintAmount());
     setNftPrice(await getNftPrice());
@@ -39,25 +37,68 @@ const Mint = () => {
     await updateTotalSupply();
   });
 
-  const getCurrentWallet = async () => {
-    const walletResponse = await getCurrentWalletConnected();
-    console.log(walletResponse);
-    setWalletAddress(walletResponse.address);
-    setStatus(walletResponse.status);
-    addWalletListener();
+  // Checks if wallet is connected
+  const checkIfWalletIsConnected = async () => {
+    const { ethereum } = window;
+    if (ethereum) {
+      console.log("Got the ethereum object: ", ethereum);
+    } else {
+      console.log("No Wallet found. Connect Wallet");
+    }
+
+    const accounts = await ethereum.request({ method: "eth_accounts" });
+
+    if (accounts.length !== 0) {
+      console.log("Found authorized Account: ", accounts[0]);
+      setCurrentAccount(accounts[0]);
+      setWalletAddress(accounts[0]);
+    } else {
+      console.log("No authorized account found");
+    }
   };
 
-  const addWalletListener = () => {
-    if (window.ethereum) {
-      window.ethereum.on("accountsChanged", async (accounts) => {
-        if (accounts.length > 0) {
-          setWalletAddress(accounts[0]);
-          setStatus("");
-        } else {
-          setWalletAddress("");
-          setStatus("Connect to Metamask using Connect Wallet button.");
-        }
+  // Checks if wallet is connected to the correct network
+  const checkCorrectNetwork = async () => {
+    const { ethereum } = window;
+    let chainId = await ethereum.request({ method: "eth_chainId" });
+    console.log("Connected to chain:" + chainId);
+
+    const rinkebyChainId = "0x4";
+
+    if (chainId !== rinkebyChainId) {
+      setCorrectNetwork(false);
+    } else {
+      setCorrectNetwork(true);
+    }
+  };
+
+  // Calls Metamask to connect wallet on clicking Connect Wallet button
+  const connectWallet = async () => {
+    try {
+      const { ethereum } = window;
+
+      if (!ethereum) {
+        console.log("Metamask not detected");
+        return;
+      }
+      let chainId = await ethereum.request({ method: "eth_chainId" });
+      console.log("Connected to chain:" + chainId);
+
+      const rinkebyChainId = "0x4";
+
+      if (chainId !== rinkebyChainId) {
+        alert("You are not connected to the Rinkeby Testnet!");
+        return;
+      }
+
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
       });
+
+      console.log("Found account", accounts[0]);
+      setCurrentAccount(accounts[0]);
+    } catch (error) {
+      console.log("Error connecting to metamask", error);
     }
   };
 
@@ -79,8 +120,16 @@ const Mint = () => {
   };
 
   const mintFeather = async () => {
-    const { status } = await mintNFT(count);
-    setStatus(status);
+    setLoadingState(1);
+    await mintNFT(count)
+      .then((result) => {
+        setLoadingState(0);
+        setStatus(result.status);
+      })
+      .catch((error) => {
+        console.error(error.status);
+        setStatus(error.status);
+      });
 
     // feather minted, update total supply
     updateTotalSupply();
@@ -88,98 +137,99 @@ const Mint = () => {
 
   return (
     <main id="main" className="h-screen py-16 bg-pattern">
-        <div className="flex flex-col items-center ">
-          <button className="mb-10 p-3 bg-amber-400 rounded-full hover:bg-amber-500 font-medium" id="walletButton" onClick={connectWalletPressed} >
-            {walletAddress.length > 0 ? (          
-              "Wallet Address: " +
-              String(walletAddress).substring(0, 6) +
-              "..." +
-              String(walletAddress).substring(38)
-            ) : (
-              <span>Connect wallet</span>
-            )}
-          </button>
-          <a
-            className="underline mb-10 hover:text-blue-800"
-            target="_blank"
-            href={"https://rinkeby.etherscan.io/address/" + contractAddress}
-            rel="noopener noreferrer"
+      <div className="flex flex-col items-center ">
+        {currentAccount === "" ? (
+          <button
+            className="m-10 h-12 w-64 text-center uppercase text-xl font-bold bg-amber-400 hover:bg-amber-500 rounded-full"
+            onClick={connectWallet}
           >
-            {contractAddress}
-          </a>
-          
-          {isSaleActive ? (
-            <>
-              {nftPrice} Ξ<span className="text-sm"></span>
-              {/* Minted NFT Ratio */}
-              <span className="text-xl font-medium">
-                {`${totalSupply}`} / 5000
-              </span>
-              <div className="flex items-center mt-6 text-3xl font-bold bg-amber-400 rounded-full">
-                <button
-                  className="flex items-center justify-center h-12 w-12 hover:bg-amber-500 text-center rounded-full"
-                  onClick={incrementCount}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+            Connect Wallet
+          </button>
+        ) : correctNetwork ? (
+          <div className="flex flex-col items-center ">
+            <div className="mb-4">Your wallet: {walletAddress}</div>
+            {isSaleActive ? (
+              <div className="flex flex-col items-center">
+                <div className="flex items-center m-4 text-3xl font-bold bg-amber-400 rounded-full">
+                  <button
+                    className="flex items-center justify-center h-12 w-12 hover:bg-amber-500 text-center rounded-full"
+                    onClick={incrementCount}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 4v16m8-8H4"
-                    />
-                  </svg>
-                </button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                  </button>
 
-                <h2 className="mx-8">{count}</h2>
+                  <h2 className="mx-8">{count}</h2>
 
-                <button
-                  className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-amber-500 text-center"
-                  onClick={decrementCount}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                  <button
+                    className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-amber-500 text-center"
+                    onClick={decrementCount}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M20 12H4"
-                    />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M20 12H4"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <button
+                  className="m-4 h-12 w-48 text-center uppercase text-xl font-bold bg-amber-400 hover:bg-amber-500 rounded-full"
+                  onClick={mintFeather}
+                >
+                  Mint Feather!
                 </button>
+                <span className="text-sm">{nftPrice} Ξ</span>
+                <span className="text-xl font-medium">
+                  {`${totalSupply}`} / 5000
+                </span>
               </div>
-              {/* Mint Button */}
-              <button
-                className="mt-10 h-12 w-48 text-center uppercase text-xl font-bold bg-amber-400 hover:bg-amber-500 rounded-full"
-                onClick={mintFeather}
-              >
-                Mint Feather
-              </button>
-            </>
-          ) : (
-            <p className="text-2xl mt-8">Sale is not started yet...</p>
-          )}
-
-          {/* Status */}
-
-          <span className="text-black">
-            {status && (
-              <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-black ">
-                {status}
-              </div>
+            ) : (
+              <span>Sale is not started</span>
             )}
-          </span>
-        </div>
+          </div>
+        ) : (
+          <div className="flex flex-col justify-center items-center mb-20 font-bold text-2xl gap-y-3">
+            You are not connected to Rinkeby Testnet.
+          </div>
+        )}
+
+        {loadingState === 1 ? (
+          <div className="text-lg font-bold">Processing your transaction</div>
+        ) : (
+          <div></div>
+        )}
+
+        {/* Status */}
+
+        <span className="text-black">
+          {status && (
+            <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-black ">
+              {status}
+            </div>
+          )}
+        </span>
+      </div>
     </main>
   );
 };
