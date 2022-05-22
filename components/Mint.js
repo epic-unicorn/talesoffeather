@@ -52,6 +52,12 @@ const Mint = () => {
       console.log("Found authorized Account: ", accounts[0]);
       setCurrentAccount(accounts[0]);
       setWalletAddress(accounts[0]);
+
+      ethereum.on('accountsChanged', function (accounts) {
+        console.log('Account changed to: ' + accounts[0])
+        window.location.reload();
+      })
+
     } else {
       console.log("No authorized account found");
     }
@@ -64,6 +70,11 @@ const Mint = () => {
     console.log("Connected to chain:" + chainId);
 
     const rinkebyChainId = "0x4";
+
+    ethereum.on('chainChanged', (chainId) => {
+      console.log('Chain ID changed to: ' + chainId);
+      window.location.reload();
+    });   
 
     if (chainId !== rinkebyChainId) {
       setCorrectNetwork(false);
@@ -79,6 +90,7 @@ const Mint = () => {
 
       if (!ethereum) {
         console.log("Metamask not detected");
+        alert("Metamask not detected!");
         return;
       }
       let chainId = await ethereum.request({ method: "eth_chainId" });
@@ -97,6 +109,7 @@ const Mint = () => {
 
       console.log("Found account", accounts[0]);
       setCurrentAccount(accounts[0]);
+
     } catch (error) {
       console.log("Error connecting to metamask", error);
     }
