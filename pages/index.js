@@ -1,6 +1,5 @@
 import Main from "../components/Main";
 import Mint from "../components/Mint";
-import Transactions from "../components/Transactions";
 import Head from "next/head";
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
       </Head>
       {/* <Main /> */}
       <Mint />
-      {/* <Transactions /> */}
     </div>
   );
 }
