@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { isMobile } from "react-device-detect";
 import { useStatus } from "../context/statusContext";
 
 import {
@@ -12,10 +13,6 @@ import {
 
 const dappUrl = 'testtest';
 const metamaskAppDeepLink = "https://metamask.app.link/dapp/" + dappUrl;
-
-const isMobile = ()=>{
-  return 'ontouchstart' in window || 'onmsgesturechange' in window;
-}
 
 const Mint = () => {
   const { status, setStatus } = useStatus();
