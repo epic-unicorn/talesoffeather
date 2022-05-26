@@ -29,7 +29,8 @@ const Mint = () => {
   const [loadingState, setLoadingState] = useState(0);
 
   useEffect(async () => {
-    console.log("App environment: " + process.env.NODE_ENV);
+    console.log("Node environment: " + process.env.NODE_ENV);
+    console.log("Vercel environment: " + process.env.VERCEL_ENV);
 
     checkIfWalletIsConnected();
     checkCorrectNetwork();
