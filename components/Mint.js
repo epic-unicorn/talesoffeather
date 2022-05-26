@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { isMobile } from "react-device-detect";
 import { useStatus } from "../context/statusContext";
+import projectConfig  from "../config/projectConfig";
 
 import {
-  getMaxMintAmount,
   getTotalSupply,
-  getNftPrice,
   mintNFT,
   getSaleState,
 } from "../utils/interact";
 
-const dappUrl = 'testtest';
-const metamaskAppDeepLink = "https://metamask.app.link/dapp/" + dappUrl;
+const metamaskAppDeepLink = "https://metamask.app.link/dapp/" + projectConfig.siteUrl;
 
 const Mint = () => {
-  const { status, setStatus } = useStatus();
+  const {status, setStatus} = useStatus();
   const [count, setCount] = useState(1);
-  const [maxMintAmount, setMaxMintAmount] = useState(0);
   const [totalSupply, setTotalSupply] = useState(0);
-  const [nftPrice, setNftPrice] = useState("0.001");
   const [isSaleActive, setIsSaleActive] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
   const [currentAccount, setCurrentAccount] = useState("");
@@ -27,12 +23,8 @@ const Mint = () => {
 
   useEffect(async () => {  
     printAppInfo();
-
     checkIfWalletIsConnected();
     checkCorrectNetwork();
-
-    setMaxMintAmount(await getMaxMintAmount());
-    setNftPrice(await getNftPrice());
     setIsSaleActive(await getSaleState());
     await updateTotalSupply();
   });
@@ -125,7 +117,7 @@ const Mint = () => {
   };
 
   const incrementCount = () => {
-    if (count < maxMintAmount) {
+    if (count < projectConfig.maxMintAmountPerTxn) {
       setCount(count + 1);
     }
   };
@@ -168,7 +160,7 @@ const Mint = () => {
             className="m-10 h-12 w-64 text-center uppercase text-xl font-bold bg-amber-400 hover:bg-amber-500 rounded-full"
             onClick={connectWallet}
           >
-            Connect Wallet
+            connect Wallet
           </button>
           )
         ) : correctNetwork ? (
@@ -176,7 +168,7 @@ const Mint = () => {
             <span className="mb-4">{walletAddress.substring(0, 5)}…{walletAddress.substring(walletAddress.length - 4)}</span>
             {isSaleActive ? (
               <div className="flex flex-col items-center">
-                <span className="text-sm">{nftPrice} Ξ</span>
+                <span className="text-sm">{projectConfig.mintCost} Ξ</span>
                 <span className="text-xl font-medium">
                   {`${totalSupply}`} / 5000
                 </span>        

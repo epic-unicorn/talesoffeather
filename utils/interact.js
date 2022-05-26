@@ -5,22 +5,13 @@ const contract = require("../artifacts/contracts/FeatherTest.sol/FeatherTest.jso
 const contractAddress = "0xC0a19730710dc95A90B03376a0C5455A71912c19";
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
-// Contract Methods
+import projectConfig  from "../config/projectConfig";
 
-export const getMaxMintAmount = async () => {
-  const result = await nftContract.methods.maxTokenPurchase().call();
-  return result;
-};
+// Contract Methods
 
 export const getTotalSupply = async () => {
   const result = await nftContract.methods.totalSupply().call();
   return result;
-};
-
-export const getNftPrice = async () => {
-  const result = await nftContract.methods.tokenPrice().call();
-  const resultEther = web3.utils.fromWei(result, "ether");
-  return resultEther;
 };
 
 export const getSaleState = async () => {
@@ -66,7 +57,7 @@ export const mintNFT = async (mintAmount) => {
   const transactionParameters = {
     to: contractAddress,
     from: window.ethereum.selectedAddress, 
-    value: parseInt(web3.utils.toWei("0.001", "ether") * mintAmount).toString(
+    value: parseInt(web3.utils.toWei(projectConfig.mintCost, "ether") * mintAmount).toString(
       16
     ), // hex
     gasLimit: "0",
