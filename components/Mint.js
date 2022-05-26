@@ -3,7 +3,6 @@ import { isMobile } from "react-device-detect";
 import { useStatus } from "../context/statusContext";
 
 import {
-  getContractAddress,
   getMaxMintAmount,
   getTotalSupply,
   getNftPrice,
@@ -16,21 +15,18 @@ const metamaskAppDeepLink = "https://metamask.app.link/dapp/" + dappUrl;
 
 const Mint = () => {
   const { status, setStatus } = useStatus();
-
   const [count, setCount] = useState(1);
   const [maxMintAmount, setMaxMintAmount] = useState(0);
   const [totalSupply, setTotalSupply] = useState(0);
   const [nftPrice, setNftPrice] = useState("0.001");
   const [isSaleActive, setIsSaleActive] = useState(false);
-  const [contractAddress, setContractAddress] = useState("0x");
   const [walletAddress, setWalletAddress] = useState("");
   const [currentAccount, setCurrentAccount] = useState("");
   const [correctNetwork, setCorrectNetwork] = useState(false);
   const [loadingState, setLoadingState] = useState(0);
 
-  useEffect(async () => {
-    console.log("Node environment: " + process.env.NODE_ENV);
-    console.log("Vercel environment: " + process.env.NEXT_PUBLIC_VERCEL_ENV);
+  useEffect(async () => {  
+    printAppInfo();
 
     checkIfWalletIsConnected();
     checkCorrectNetwork();
@@ -38,9 +34,14 @@ const Mint = () => {
     setMaxMintAmount(await getMaxMintAmount());
     setNftPrice(await getNftPrice());
     setIsSaleActive(await getSaleState());
-    setContractAddress(await getContractAddress());
     await updateTotalSupply();
   });
+
+  function printAppInfo()
+  {      
+      console.log("VERCEL URL: " + process.env.NEXT_PUBLIC_VERCEL_URL);
+      console.log("VERCEL environment: " + process.env.NEXT_PUBLIC_VERCEL_ENV);
+  }
 
   // Checks if wallet is connected
   const checkIfWalletIsConnected = async () => {

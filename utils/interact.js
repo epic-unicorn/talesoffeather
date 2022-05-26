@@ -1,14 +1,9 @@
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-const web3 = createAlchemyWeb3(process.env.API_URL);
+const web3 = createAlchemyWeb3(process.env.NEXT_PUBLIC_API_URL);
 
 const contract = require("../artifacts/contracts/FeatherTest.sol/FeatherTest.json");
 const contractAddress = "0xC0a19730710dc95A90B03376a0C5455A71912c19";
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
-
-export const getContractAddress = async () =>
-{
-  return contractAddress;
-};
 
 // Contract Methods
 
