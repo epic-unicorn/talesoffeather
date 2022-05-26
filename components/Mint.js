@@ -29,6 +29,8 @@ const Mint = () => {
   const [loadingState, setLoadingState] = useState(0);
 
   useEffect(async () => {
+    console.log("App environment: " + process.env.NODE_ENV);
+
     checkIfWalletIsConnected();
     checkCorrectNetwork();
 
@@ -100,7 +102,7 @@ const Mint = () => {
       const rinkebyChainId = "0x4";
 
       if (chainId !== rinkebyChainId) {
-        alert("You are not connected to the Rinkeby Testnet!");
+        console.log("You are not connected to the Rinkeby Testnet!");
         return;
       }
 
