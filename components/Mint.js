@@ -30,7 +30,7 @@ const Mint = () => {
 
   useEffect(async () => {
     console.log("Node environment: " + process.env.NODE_ENV);
-    console.log("Vercel environment: " + process.env.VERCEL_ENV);
+    console.log("Vercel environment: " + VERCEL_ENV);
 
     checkIfWalletIsConnected();
     checkCorrectNetwork();
