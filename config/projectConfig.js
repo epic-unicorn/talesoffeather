@@ -7,7 +7,7 @@ const projectConfig = {
   
     maxMintAmountPerTxn: 3,
   
-    mintCost: process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ? 0.06 : 0.001,
+    mintCost: process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ? "0.06" : "0.001",
   
     networkName:
       process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
