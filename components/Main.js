@@ -16,7 +16,7 @@ export default function Main() {
           <div className="w-24 m-2 mt-3 ml-6 items-center">
             <Link href="#hero">
               <a>
-                <Image src={MintButtonMini} />
+                <Image alt="Mint" src={MintButtonMini} />
               </a>
             </Link>
           </div>
@@ -108,7 +108,7 @@ export default function Main() {
             <div className="w-48 m-2 justify-center">
               <Link href="#hero">
                 <a>
-                  <Image src={MintButton} />
+                  <Image alt="Mint" src={MintButton} />
                 </a>
               </Link>
             </div>
@@ -141,13 +141,13 @@ export default function Main() {
         <div className="flex justify-around md:mt-0 md:block md:flex-1">
           <div className="flex flex-col lg:flex-row">
             <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
-              <Image src={ExampleNFT} className="rounded-2xl" />
+              <Image alt="Example" src={ExampleNFT} className="rounded-2xl" />
             </div>
             <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
-              <Image src={ExampleNFT} className="rounded-2xl" />
+              <Image alt="Example" src={ExampleNFT} className="rounded-2xl" />
             </div>
             <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
-              <Image src={ExampleNFT} className="rounded-2xl" />
+              <Image alt="Example" src={ExampleNFT} className="rounded-2xl" />
             </div>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function Main() {
         className="flex  flex-col justify-center px-4 p-24 text-center md:mt-0 md:flex-row md:items-center md:justify-center md:px-12 md:text-left lg:px-12"
       >
         <div className="md:mr-10 md:flex-1 md:max-w-2xl p-10">
-          <Image src={ExampleNFT} className="rounded-3xl" />
+          <Image alt="Example" src={ExampleNFT} className="rounded-3xl" />
         </div>
         <div className="md:mr-10 md:flex-1 md:max-w-sm p-10 rounded-3xl">
           <h1 className="mb-7 text-7xl uppercase font-amatic font-black">
@@ -184,7 +184,7 @@ export default function Main() {
           </button>
         </div>
         <div className="md:mr-10 md:flex-1 md:max-w-2xl p-10">
-          <Image src={ExampleNFT} className="rounded-3xl" />
+          <Image alt="Example" src={ExampleNFT} className="rounded-3xl" />
         </div>
       </section>
 
@@ -209,13 +209,13 @@ export default function Main() {
         <div className="flex justify-around md:mt-10 md:block">
           <div className="flex flex-col lg:flex-row">
             <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
-              <Image src={ExampleNFT} className="rounded-2xl" />
+              <Image alt="Example" src={ExampleNFT} className="rounded-2xl" />
             </div>
             <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
-              <Image src={ExampleNFT} className="rounded-2xl" />
+              <Image alt="Example" src={ExampleNFT} className="rounded-2xl" />
             </div>
             <div className="flex-1 flex flex-col mx-6 shadow-2xl relative my-8">
-              <Image src={ExampleNFT} className="rounded-2xl" />
+              <Image alt="Example" src={ExampleNFT} className="rounded-2xl" />
             </div>
           </div>
         </div>

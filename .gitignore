@@ -40,3 +40,4 @@ cache
 #Hardhat files
 package-lock.json
 .env.local
+.env.development

@@ -9,7 +9,7 @@ import {
   getSaleState,
 } from "../utils/interact";
 
-const metamaskAppDeepLink = "https://metamask.app.link/dapp/" + projectConfig.siteUrl;
+const metamaskAppDeepLink = "https://metamask.app.link/dapp/" + projectConfig.siteDomain;
 
 const Mint = () => {
   const {status, setStatus} = useStatus();

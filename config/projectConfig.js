@@ -32,19 +32,19 @@ const projectConfig = {
     discordUrl: 'https://discord.gg/your_discord_invite_code',
   
     openseaCollectionUrl:
-      process.env.NODE_ENV === 'production'
+      process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
         ? 'https://opensea.io/collection/your_opensea_collection_name'
-        : 'https://testnets.opensea.io/collection/your_opensea_collection_name',
+        : 'https://testnets.opensea.io/collection/feathertest-v3',
   
     contractAddress:
-      process.env.NODE_ENV === 'production'
-        ? 'your_mainnet_contract_address'
-        : 'your_testnet_contract_address',
+      process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
+        ? '0xC0a19730710dc95A90B03376a0C5455A71912c19'
+        : '0xC0a19730710dc95A90B03376a0C5455A71912c19',
   
-    scanUrl:
-      process.env.NODE_ENV === 'production'
-        ? 'https://etherscan.io/address/your_ethereum_contract_address'
-        : 'https://rinkeby.etherscan.io/address/your_rinkeby_contract_address',
+    etherScanUrl:
+      process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
+        ? 'https://etherscan.io/address/0xC0a19730710dc95A90B03376a0C5455A71912c19'
+        : 'https://rinkeby.etherscan.io/address/0xC0a19730710dc95A90B03376a0C5455A71912c19',
   };
   
   export default projectConfig;

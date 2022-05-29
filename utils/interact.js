@@ -1,13 +1,11 @@
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-const web3 = createAlchemyWeb3(process.env.API_URL);
 
-const contract = require("../artifacts/contracts/FeatherTest.sol/FeatherTest.json");
-const contractAddress = "0xC0a19730710dc95A90B03376a0C5455A71912c19";
-const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
-
+import rpcConfig from "../config/rpcConfig";
 import projectConfig  from "../config/projectConfig";
 
-// Contract Methods
+const web3 = createAlchemyWeb3(rpcConfig(process.env.NEXT_PUBLIC_ALCHEMY_KEY));
+const contract = require("../artifacts/contracts/FeatherTest.sol/FeatherTest.json");
+const nftContract = new web3.eth.Contract(contract.abi, projectConfig.contractAddress);
 
 export const getTotalSupply = async () => {
   const result = await nftContract.methods.totalSupply().call();
