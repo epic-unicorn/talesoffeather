@@ -137,6 +137,7 @@ const Mint = () => {
         setStatus(result.status);
       })
       .catch((error) => {
+        console.log(error);
         console.error(error.status);
         setStatus(error.status);
       });

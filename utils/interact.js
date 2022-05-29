@@ -53,7 +53,7 @@ export const mintNFT = async (mintAmount) => {
 
   // set up your Ethereum transaction
   const transactionParameters = {
-    to: contractAddress,
+    to: projectConfig.contractAddress,
     from: window.ethereum.selectedAddress, 
     value: parseInt(web3.utils.toWei(projectConfig.mintCost, "ether") * mintAmount).toString(
       16
