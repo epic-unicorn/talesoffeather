@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useEthereumProvider } from "../hooks/useEthereumProvider";
+import { useRouter } from 'next/router';
 import { useStatus } from "../context/statusContext";
 import projectConfig from "../config/projectConfig";
 
@@ -16,6 +17,7 @@ const Mint = () => {
   const [message, setMessage] = useState("");
   const [isConnecting, setIsConnecting] = useState(false);
   const {isMetaMask} = useEthereumProvider();
+  const router = useRouter();
 
   function printAppInfo() {
     console.log("VERCEL URL: " + process.env.NEXT_PUBLIC_VERCEL_URL);
@@ -23,7 +25,8 @@ const Mint = () => {
   }
 
   async function connectMetaMask() {
-    const { ethereum } = window;
+    const { ethereum } = window;    
+
     if (isMetaMask) {
       setIsConnecting(true);
       setConnErrMsg('');
@@ -49,6 +52,7 @@ const Mint = () => {
           console.log(error);
         });
     } else {
+      setConnErrMsg('Install MetaMask to connect your wallet.')
       window.open(
         `https://metamask.app.link/dapp/${projectConfig.siteDomain}${router.pathname}`,
         "_ blank"
@@ -79,22 +83,24 @@ const Mint = () => {
 
   const checkConnectedChainId = async () => {
     const { ethereum } = window;
-    await ethereum
-      .request({ method: "eth_chainId" })
-      .then((chainId) => {
-        console.log('checkConnectedChain: ' + chainId);
-        ethereum.on("chainChanged", (chainId) => {
-          console.log("Chain ID changed to: " + chainId);
-          window.location.reload();
-        });
+    if (ethereum) {
+      await ethereum
+        .request({ method: "eth_chainId" })
+        .then((chainId) => {
+          console.log('checkConnectedChain: ' + chainId);
+          ethereum.on("chainChanged", (chainId) => {
+            console.log("Chain ID changed to: " + chainId);
+            window.location.reload();
+          });
 
-        if (chainId !== projectConfig.chainId) {
-          setConnErrMsg(`Change the network to ${projectConfig.networkName}.`);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+          if (chainId !== projectConfig.chainId) {
+            setConnErrMsg(`Change the network to ${projectConfig.networkName}.`);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   useEffect(() => {
