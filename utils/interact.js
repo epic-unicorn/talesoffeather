@@ -1,11 +1,14 @@
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
 import rpcConfig from "../config/rpcConfig";
-import projectConfig  from "../config/projectConfig";
+import projectConfig from "../config/projectConfig";
 
 const web3 = createAlchemyWeb3(rpcConfig(process.env.NEXT_PUBLIC_ALCHEMY_KEY));
 const contract = require("../artifacts/contracts/FeatherTest.sol/FeatherTest.json");
-const nftContract = new web3.eth.Contract(contract.abi, projectConfig.contractAddress);
+const nftContract = new web3.eth.Contract(
+  contract.abi,
+  projectConfig.contractAddress
+);
 
 export const getTotalSupply = async () => {
   const result = await nftContract.methods.totalSupply().call();
@@ -21,11 +24,7 @@ export const getTokensOfOwner = async () => {
   if (!window.ethereum.selectedAddress) {
     return {
       success: false,
-      status: (
-        <p>
-          <span className="px-2">Wallet not connected...</span>
-        </p>
-      ),
+      status: 'Wallet not connected...'
     };
   }
   const result = await nftContract.methods
@@ -43,21 +42,17 @@ export const mintNFT = async (mintAmount) => {
   if (!window.ethereum.selectedAddress) {
     return {
       success: false,
-      status: (
-        <p>
-          <span className="px-2">Wallet not connected...</span>
-        </p>
-      ),
+      status: 'Wallet not connected...',
     };
   }
 
   // set up your Ethereum transaction
   const transactionParameters = {
     to: projectConfig.contractAddress,
-    from: window.ethereum.selectedAddress, 
-    value: parseInt(web3.utils.toWei(projectConfig.mintCost, "ether") * mintAmount).toString(
-      16
-    ), // hex
+    from: window.ethereum.selectedAddress,
+    value: parseInt(
+      web3.utils.toWei(projectConfig.mintCost, "ether") * mintAmount
+    ).toString(16), // hex
     gasLimit: "0",
     data: nftContract.methods.mintFeather(mintAmount).encodeABI(),
   };
@@ -68,19 +63,14 @@ export const mintNFT = async (mintAmount) => {
       params: [transactionParameters],
     });
 
-    const txHashLink = "https://rinkeby.etherscan.io/tx/" + txHash;
     return {
       success: true,
-      status: (
-        <a href={txHashLink} target="_blank">
-          Transaction link: {txHashLink}
-        </a>
-      ),
+      hash: txHash,
     };
   } catch (error) {
     return {
       success: false,
-      status: "Something went wrong: " + error.message,
+      status: error.message,
     };
   }
 };

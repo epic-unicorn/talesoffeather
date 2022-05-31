@@ -16,7 +16,7 @@ const projectConfig = {
   
     chainName: 'ETH',
   
-    chainId: process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ? 1 : 4, // Main (1), Rinkeby (4)
+    chainId: process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ? '0x1' : '0x4', // Main (1), Rinkeby (4)
   
     siteDomain: 'www.yourdomain.com',
   
