@@ -53,7 +53,7 @@ const Mint = () => {
         });
     } else {
       setConnErrMsg('Install MetaMask to connect your wallet.')
-      const metamaskUrl = `https://metamask.app.link/dapp/${projectConfig.siteDomain}${router.pathname}`;
+      const metamaskUrl = `https://metamask.app.link/dapp/${projectConfig.siteDomain}`;
       console.log('Deeplink to MetaMask: ' + metamaskUrl);
 
       window.open(
