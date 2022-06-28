@@ -1,138 +1,295 @@
 import React, { useState, useEffect } from "react";
+import { useEthereumProvider } from "../hooks/useEthereumProvider";
 import { useStatus } from "../context/statusContext";
-import Image from "next/image";
+import projectConfig from "../config/projectConfig";
 
-import {
-  getMaxMintAmount,
-  getTotalSupply,
-  getNftPrice,
-  mintNFT,
-  getSaleState,
-} from "../utils/interact";
+import { getTotalSupply, mintNFT, getSaleState } from "../utils/interact";
 
 const Mint = () => {
-  const { status, setStatus } = useStatus();
-
-  const [count, setCount] = useState(1);
-  const [maxMintAmount, setMaxMintAmount] = useState(0);
+  const {status, setStatus} = useStatus();
+  const [mintCount, setCount] = useState(1);
   const [totalSupply, setTotalSupply] = useState(0);
-  const [nftPrice, setNftPrice] = useState("0.001");
   const [isSaleActive, setIsSaleActive] = useState(false);
+  const [currentAccount, setCurrentAccount] = useState("");
+  const [connErrMsg, setConnErrMsg] = useState("");
+  const [isMinting, setIsMinting] = useState(false);
+  const [message, setMessage] = useState("");
+  const [isConnecting, setIsConnecting] = useState(false);
+  const {isMetaMask} = useEthereumProvider();
 
-  useEffect(async () => {
-    setMaxMintAmount(await getMaxMintAmount());
-    setNftPrice(await getNftPrice());
-    setIsSaleActive(await getSaleState());
-    await updateTotalSupply();
-  });
+  function printAppInfo() {
+    console.log("VERCEL URL: " + process.env.NEXT_PUBLIC_VERCEL_URL);
+    console.log("VERCEL environment: " + process.env.NEXT_PUBLIC_VERCEL_ENV);
+  }
 
-  const updateTotalSupply = async () => {
-    const mintedCount = await getTotalSupply();
-    setTotalSupply(mintedCount);
+  async function connectMetaMask() {
+    const { ethereum } = window;    
+
+    if (isMetaMask) {
+      setIsConnecting(true);
+      setConnErrMsg('');
+      await ethereum
+        .request({
+          method: "eth_requestAccounts",
+        })
+        .then((result) => {
+          setIsConnecting(false);
+          if (result.length !== 0) {
+            setCurrentAccount(result[0]);
+            ethereum.on("accountsChanged", function (result) {
+              console.log("Account changed to: " + result[0]);
+              window.location.reload();
+            });
+          } else {
+            setConnErrMsg("Not connected to your wallet.");
+          }
+        })
+        .catch((error) => {
+          setIsConnecting(false);
+          setConnErrMsg(error.message);
+          console.log(error);
+        });
+    } else {
+      setConnErrMsg('Install MetaMask to connect your wallet.')
+      const metamaskUrl = `https://metamask.app.link/dapp/${projectConfig.siteDomain}`;
+      console.log('Deeplink to MetaMask: ' + metamaskUrl);
+
+      window.open(
+        metamaskUrl,
+        "_ blank"
+      );
+    }
+  }
+
+  const checkAuthorizedAccount = async () => {
+    const { ethereum } = window;
+    if (ethereum) {
+      await ethereum
+        .request({ method: "eth_accounts" })
+        .then((result) => {
+          console.log('checkAuthAccount: ' + result);
+          if (result.length !== 0) {
+            setCurrentAccount(result[0]);
+            ethereum.on("accountsChanged", function (result) {
+              console.log("Account changed to: " + result[0]);
+              window.location.reload();
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
+  const checkConnectedChainId = async () => {
+    const { ethereum } = window;
+    if (ethereum) {
+      await ethereum
+        .request({ method: "eth_chainId" })
+        .then((chainId) => {
+          console.log('checkConnectedChain: ' + chainId);
+          ethereum.on("chainChanged", (chainId) => {
+            console.log("Chain ID changed to: " + chainId);
+            window.location.reload();
+          });
+
+          if (chainId !== projectConfig.chainId) {
+            setConnErrMsg(`Change the network to ${projectConfig.networkName}.`);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+  
+  useEffect(() => {
+    printAppInfo();
+    checkAuthorizedAccount();
+    checkConnectedChainId();
+    //setIsSaleActive(await getSaleState());
+  }, []);
+
+  useEffect(() => {
+    async function fetchTotalSupply() {
+      const mintedCount = await getTotalSupply();
+      setTotalSupply(mintedCount);
+    }
+
+    fetchTotalSupply().catch(console.error);
+
+    // cleanup
+    return () => setTotalSupply("?");
+  }, []);
+
   const incrementCount = () => {
-    if (count < maxMintAmount) {
-      setCount(count + 1);
+    if (mintCount < projectConfig.maxMintAmountPerTxn) {
+      setCount(mintCount + 1);
     }
   };
 
   const decrementCount = () => {
-    if (count > 1) {
-      setCount(count - 1);
+    if (mintCount > 1) {
+      setCount(mintCount - 1);
     }
   };
 
   const mintFeather = async () => {
-    const { status } = await mintNFT(count);
-    setStatus(status);
-
-    // We minted a new Feather, so we need to update the total supply
-    updateTotalSupply();
+    setMessage('');
+    setIsMinting(true);
+    await mintNFT(mintCount)
+      .then((result) => {
+        setIsMinting(false);
+        if (result.success) {
+          setMessage("Succesfully minted your Feather! Hash: " + result.hash);
+        } else {
+          setMessage(result.status);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsMinting(false);
+      });
   };
 
   return (
     <main id="main" className="h-screen py-16 bg-pattern">
-      <div className="container max-w-6xl mx-auto flex flex-col items-center pt-4">
-        <div className="flex flex-col items-center">
-          <span className="text-4xl">Testing</span><br />
-          {isSaleActive ? (
-            <>
-              {/* Minted NFT Ratio */}
-              <span>
-                Already minted: {`${totalSupply}`} of 5K
-              </span>
-              <h4 className="mt-2 font-semibold text-center">
-                {nftPrice} ETH{" "}
-                <span className="text-sm"> + GAS</span>
-              </h4>
-
-              <div className="flex items-center mt-6 text-3xl font-bold">
-                <button
-                  className="flex items-center justify-center w-12 h-12 bg-gray-400 hover:bg-gray-500 rounded-md text-center" onClick={incrementCount}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 4v16m8-8H4"
-                    />
-                  </svg>
-                </button>
-
-                <h2 className="mx-8">{count}</h2>
-
-                <button
-                  className="flex items-center justify-center w-12 h-12 bg-gray-400 hover:bg-gray-500 rounded-md text-center"
-                  onClick={decrementCount}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M20 12H4"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Mint Button */}
+      <div className="flex flex-col items-center ">
+        {currentAccount === "" ? (
+          isConnecting ? (
+            <button
+              type="button"
+              className="flex justify-center items-center m-10 h-12 w-64 text-center uppercase text-xl font-bold bg-amber-500 rounded-full cursor-not-allowed"
+              disabled
+            >
+              <svg
+                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Connecting
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="m-10 h-12 w-64 text-center uppercase text-xl font-bold bg-amber-400 hover:bg-amber-500 rounded-full"
+              onClick={connectMetaMask}
+            >
+              <span>Connect</span>
+            </button>
+          )
+        ) : !connErrMsg ? (
+          <div className="flex flex-col items-center">
+            <span className="text-sm">{projectConfig.mintCost} Ξ</span>
+            <span className="text-xl font-medium">
+              {`${totalSupply}`} / {projectConfig.maxSupply}
+            </span>
+            <div className="flex items-center m-4 text-3xl font-bold bg-amber-400 rounded-full">
               <button
-                className="mt-6 py-2 px-4 text-center uppercase hover:bg-gray-500 bg-gray-400 rounded"
+                className="flex items-center justify-center h-12 w-12 hover:bg-amber-500 text-center rounded-full"
+                onClick={incrementCount}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </button>
+
+              <h2 className="mx-8">{mintCount}</h2>
+
+              <button
+                className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-amber-500 text-center"
+                onClick={decrementCount}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M20 12H4"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {isMinting ? (
+              <button
+                type="button"
+                className="flex justify-center items-center m-4 h-12 w-48 text-center uppercase text-xl font-bold bg-amber-500 rounded-full cursor-not-allowed"
+                disabled
+              >
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                {isMinting && "Minting"}
+                {!isMinting && "Processing"}
+              </button>
+            ) : (
+              <button
+                className="m-4 h-12 w-48 text-center uppercase text-xl font-bold bg-amber-400 hover:bg-amber-500 rounded-full"
                 onClick={mintFeather}
               >
-                Mint now!
+                Mint Feather!
               </button>
-            </>
-          ) : (
-            <p className="text-2xl mt-8">
-              Sale is not started yet...
-            </p>
-          )}
+            )}
+          </div>
+        ) : (
+          <div></div>
+        )}
 
-          {/* Status */}
-
-          <span className="text-th-accent-medium">
-          {status && (
-            <div className="flex items-center justify-center px-4 py-4 mt-8 font-semibold text-black rounded-md ">
-              {status}
-            </div>
-          )}</span>
-        </div>
+        {message && <div className="text-center font-bold">{message}</div>}
+        {connErrMsg && (
+          <div className="text-center font-bold">{connErrMsg}</div>
+        )}
       </div>
     </main>
   );
