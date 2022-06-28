@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <div className="bg-th-background">
       <Meta />
-      {/* <Placeholder /> */}
+      <Placeholder />
       {/* <Main /> */}
-      <Mint />
+      {/* <Mint /> */}
     </div>
   );
 }
