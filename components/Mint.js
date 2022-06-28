@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useEthereumProvider } from "../hooks/useEthereumProvider";
-import { useRouter } from 'next/router';
 import { useStatus } from "../context/statusContext";
 import projectConfig from "../config/projectConfig";
 
@@ -17,7 +16,6 @@ const Mint = () => {
   const [message, setMessage] = useState("");
   const [isConnecting, setIsConnecting] = useState(false);
   const {isMetaMask} = useEthereumProvider();
-  const router = useRouter();
 
   function printAppInfo() {
     console.log("VERCEL URL: " + process.env.NEXT_PUBLIC_VERCEL_URL);
@@ -105,7 +103,7 @@ const Mint = () => {
         });
     }
   };
-
+  
   useEffect(() => {
     printAppInfo();
     checkAuthorizedAccount();
