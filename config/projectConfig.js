@@ -38,7 +38,7 @@ const projectConfig = {
   
     contractAddress:
       process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
-        ? '0x'
+        ? '0xC0a19730710dc95A90B03376a0C5455A71912c19'
         : '0xC0a19730710dc95A90B03376a0C5455A71912c19',
   
     etherScanUrl:
